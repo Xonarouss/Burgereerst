@@ -100,6 +100,18 @@ export default function Page({ params }) {
     De woningmarkt is volledig vastgelopen. Huizenprijzen zijn geëxplodeerd, huren zijn
     onbetaalbaar geworden en studenten betalen absurde bedragen voor kleine kamers.
     Huisvesting is geen luxeproduct, maar een basisbehoefte.
+
+  <p>
+    Daarnaast pleiten wij ervoor dat het kabinet actief kiest om leegstaande of onderbenutte gebouwen
+    (zoals kantoren, zorglocaties of andere panden) waar mogelijk om te bouwen naar appartementen en studio’s,
+    in plaats van ze langdurig leeg te laten staan of onnodig te slopen. Dit versnelt woningbouw zonder dat
+    elke oplossing jaren hoeft te duren.
+  </p>
+  <p>
+    Tot slot: statushouders mogen geen voorrang meer krijgen op sociale huurwoningen. Woningtoewijzing moet eerlijk,
+    transparant en voorspelbaar zijn, met prioriteit voor mensen die hier al jaren wonen, werken en bijdragen.
+  </p>
+
   </p>
   <p>
     BurgerEerst staat voor grootschalige woningbouw, het doorbreken van blokkades,

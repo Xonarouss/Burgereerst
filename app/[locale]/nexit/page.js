@@ -54,31 +54,61 @@ export default function Page({ params }) {
         </div>
       ) : null}
     </div>
-  );
-}
-
+  
 <section className="mt-16 space-y-8">
-  <h2 className="text-3xl font-bold">Massale immigratie & EU-beperkingen</h2>
+  <h2 className="text-3xl font-bold">Migratie & nationale grip</h2>
   <p>
-    Europese regelgeving beperkt nationale grip op migratie.
-    Dit heeft directe gevolgen voor woningnood, zorgdruk en veiligheid.
+    Voor veel burgers draait dit debat om één kernvraag: houden we als land nog zelf de regie?
+    Wanneer instroom structureel groter is dan wat huisvesting, zorg, onderwijs en handhaving aankunnen,
+    ontstaat er onvermijdelijk druk en onvrede. BurgerEerst vindt dat migratiebeleid uitvoerbaar moet zijn,
+    met duidelijke grenzen en snelle procedures.
+  </p>
+  <p>
+    Europese afspraken en juridische kaders beperken regelmatig de ruimte om nationaal beleid aan te scherpen.
+    Dat is precies waar de discussie over NEXIT voor velen begint: welke bevoegdheden horen hier te liggen,
+    en welke wil je niet langer uitbesteden?
+  </p>
+
+  <h2 className="text-3xl font-bold">Wonen, voorzieningen & draagvlak</h2>
+  <p>
+    Massale instroom raakt niet alleen cijfers, maar echte levens: wachttijden voor woningen,
+    volle klassen, druk op huisartsen en spanningen in wijken waar de draagkracht al beperkt is.
+    Zonder draagvlak is elk migratiesysteem instabiel — en dat geldt ook voor solidariteit zelf.
   </p>
 
   <h2 className="text-3xl font-bold">Democratisch tekort</h2>
   <p>
-    Steeds meer beslissingen worden genomen door ongekozen instituties.
-    Nationale parlementen verliezen structureel invloed.
+    Een veelgehoorde kritiek is dat belangrijke besluiten steeds vaker via complexe Europese trajecten
+    tot stand komen, waardoor burgers het gevoel krijgen dat stemmen “weinig uitmaakt”.
+    BurgerEerst vindt dat democratische controle scherper en directer moet: wie beleid maakt,
+    moet ook direct aanspreekbaar zijn door Nederlandse kiezers.
   </p>
 
-  <h2 className="text-3xl font-bold">Vergelijking met Brexit</h2>
+  <h2 className="text-3xl font-bold">Brexit als referentie</h2>
   <p>
-    Brexit laat zien dat landen buiten de EU weer zelfstandig beleid kunnen voeren.
-    Hoewel de overgang complex was, herwon het VK zeggenschap over migratie en wetgeving.
+    Brexit laat zien dat uitstappen mogelijk is, maar ook dat het proces voorbereiding en realisme vereist.
+    Het Verenigd Koninkrijk kreeg meer beleidsruimte terug, maar betaalde ook kosten door een ingewikkelde
+    overgangsperiode, nieuwe handelsafspraken en politieke verdeeldheid.
+  </p>
+  <p>
+    De les: als je dit pad ooit serieus overweegt, moet het gebaseerd zijn op feiten, scenario’s en
+    een helder plan — niet op slogans. Tegelijk laat Brexit zien dat nationale keuzes niet “onmogelijk” zijn.
   </p>
 
-  <h2 className="text-3xl font-bold">Economische afwegingen</h2>
+  <h2 className="text-3xl font-bold">Economie, handel & zelfbeschikking</h2>
   <p>
-    Nexit vraagt om zorgvuldige voorbereiding. Handelsrelaties blijven belangrijk,
-    maar soevereiniteit en democratische controle moeten zwaarder wegen.
+    Nederland is een handelsland. Daarom is elke NEXIT-discussie automatisch ook een economisch vraagstuk.
+    BurgerEerst vindt dat soevereiniteit en democratische controle zwaar moeten wegen, maar dat je altijd
+    eerlijk moet zijn over de trade-offs: toegang tot de interne markt, regelgeving en onderhandelingen.
+  </p>
+
+  <h2 className="text-3xl font-bold">Waar het voor ons op neerkomt</h2>
+  <p>
+    NEXIT is voor BurgerEerst geen doel op zichzelf, maar een manier om de discussie over grenzen,
+    migratie, democratische controle en nationale regie scherp te voeren. Wat je ook vindt van de EU:
+    beleid moet uitvoerbaar zijn en gedragen worden door de samenleving.
   </p>
 </section>
+
+);
+}
