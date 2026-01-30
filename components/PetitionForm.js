@@ -75,7 +75,7 @@ function ShareLinks({ locale }) {
   );
 }
 
-export default function PetitionForm({ locale, dict }) {
+export default function PetitionForm({ locale, dict, onSigned }) {
   const [status, setStatus] = useState("idle"); // idle | loading | success | error | already
   const [form, setForm] = useState({
     anonymous: false,

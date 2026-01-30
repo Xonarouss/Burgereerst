@@ -17,3 +17,8 @@ html, body {
 body {
   @apply bg-white text-slate-900 antialiased;
 }
+
+/* Hide the reCAPTCHA v3 badge (the required disclosure text is shown in the petition form). */
+.grecaptcha-badge {
+  visibility: hidden !important;
+}
