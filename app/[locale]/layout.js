@@ -1,6 +1,7 @@
 import { getDict, t } from "@/lib/i18n";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Script from "next/script";
 
 export async function generateMetadata({ params }) {
   const dict = getDict(params.locale);
@@ -41,6 +42,12 @@ export default function LocaleLayout({ children, params }) {
   return (
     <html lang={params.locale}>
       <body>
+        {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ? (
+          <Script
+            src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+            strategy="afterInteractive"
+          />
+        ) : null}
         <Navbar locale={params.locale} dict={dict} />
         <main className="min-h-[70vh]">{children}</main>
         <Footer locale={params.locale} dict={dict} />

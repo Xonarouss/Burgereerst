@@ -3,6 +3,8 @@
 import { useMemo, useState } from "react";
 import { t as tt } from "@/lib/i18n";
 
+const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
 export default function PetitionForm({ locale, dict }) {
   const [status, setStatus] = useState("idle"); // idle | loading | success | error | already
   const [form, setForm] = useState({ full_name: "", city: "", email: "", consent: false, website: "" }); // website = honeypot
@@ -13,6 +15,11 @@ export default function PetitionForm({ locale, dict }) {
     setStatus("loading");
 
     try {
+      let recaptchaToken = null;
+      if (SITE_KEY && typeof window !== "undefined" && window.grecaptcha?.execute) {
+        recaptchaToken = await window.grecaptcha.execute(SITE_KEY, { action: "petition" });
+      }
+
       const res = await fetch("/api/petition", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -22,6 +29,7 @@ export default function PetitionForm({ locale, dict }) {
           city: form.city,
           email: form.email,
           consent_privacy: form.consent,
+          recaptcha_token: recaptchaToken,
           website: form.website, // honeypot
         }),
       });
@@ -102,6 +110,28 @@ export default function PetitionForm({ locale, dict }) {
       >
         {status === "loading" ? t("form.submitting") : t("form.submit")}
       </button>
+
+
+      <p className="mt-3 text-xs text-slate-500">
+        {t("form.recaptchaNote")}{" "}
+        <a
+          className="underline"
+          href="https://policies.google.com/privacy"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Privacy
+        </a>
+        {" • "}
+        <a
+          className="underline"
+          href="https://policies.google.com/terms"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Terms
+        </a>
+      </p>
 
       {status === "success" && <Notice tone="ok">{t("form.success")}</Notice>}
       {status === "already" && <Notice tone="warn">{t("form.already")}</Notice>}

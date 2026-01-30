@@ -11,7 +11,38 @@ const Schema = z.object({
   email: z.string().email().max(200),
   consent_privacy: z.boolean(),
   website: z.string().optional(), // honeypot
+  recaptcha_token: z.string().optional(),
 });
+
+
+async function verifyRecaptcha({ token, ip }) {
+  const secret = process.env.RECAPTCHA_SECRET_KEY;
+  // If no secret is configured, skip verification (useful for local/dev).
+  if (!secret) return { ok: true, skipped: true };
+
+  if (!token) return { ok: false, reason: "missing_token" };
+
+  const body = new URLSearchParams();
+  body.set("secret", secret);
+  body.set("response", token);
+  if (ip) body.set("remoteip", ip);
+
+  const resp = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: body.toString(),
+  });
+
+  const data = await resp.json().catch(() => null);
+  if (!data?.success) return { ok: false, reason: "failed", data };
+
+  // For reCAPTCHA v3 you get a score. Default accept threshold 0.5.
+  const score = typeof data.score === "number" ? data.score : 1;
+  const minScore = parseFloat(process.env.RECAPTCHA_MIN_SCORE || "0.5");
+  if (score < minScore) return { ok: false, reason: "low_score", score };
+
+  return { ok: true, score };
+}
 
 export async function POST(req) {
   try {
@@ -26,6 +57,14 @@ export async function POST(req) {
     if (!input.consent_privacy) {
       return NextResponse.json({ error: "consent_required" }, { status: 400 });
     }
+
+    const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || null;
+
+    const captcha = await verifyRecaptcha({ token: input.recaptcha_token, ip });
+    if (!captcha.ok) {
+      return NextResponse.json({ error: "captcha_failed", reason: captcha.reason }, { status: 400 });
+    }
+
 
     const supabase = getSupabaseAdmin();
 
@@ -74,7 +113,6 @@ export async function POST(req) {
     const token = randomToken(24);
     const tokenHash = sha256(token);
 
-    const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || null;
     const ua = req.headers.get("user-agent") || null;
 
     const { error: insErr } = await supabase.from("petition_signatures").insert({

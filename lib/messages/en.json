@@ -94,7 +94,8 @@
     "submitting": "Working…",
     "success": "Check your email to confirm your signature.",
     "already": "This email was already used. If you haven’t confirmed yet, check inbox/spam.",
-    "error": "Something went wrong. Please try again."
+    "error": "Something went wrong. Please try again.",
+    "recaptchaNote": "This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply."
   },
   "vision": {
     "title": "Vision & principles",

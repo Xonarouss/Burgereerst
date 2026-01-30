@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 import { getDict, t } from "@/lib/i18n";
 import PetitionForm from "@/components/PetitionForm";
 import CountBadge from "@/components/CountBadge";

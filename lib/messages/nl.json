@@ -94,7 +94,8 @@
     "submitting": "Bezig…",
     "success": "Check je e-mail om je handtekening te bevestigen.",
     "already": "Dit e-mailadres is al gebruikt. Als je nog niet bevestigd hebt, check je inbox/spam.",
-    "error": "Er ging iets mis. Probeer het opnieuw."
+    "error": "Er ging iets mis. Probeer het opnieuw.",
+    "recaptchaNote": "Deze site wordt beschermd door reCAPTCHA en valt onder het Privacybeleid en de Servicevoorwaarden van Google."
   },
   "vision": {
     "title": "Visie & principes",
