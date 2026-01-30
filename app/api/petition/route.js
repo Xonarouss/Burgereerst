@@ -39,8 +39,33 @@ export async function POST(req) {
       .eq("email_hash", emailHash)
       .maybeSingle();
 
+    // If the email already exists but is not verified yet, resend a fresh
+    // confirmation link instead of blocking the user.
     if (existing) {
-      return NextResponse.json({ code: "ALREADY" }, { status: 409 });
+      if (existing.verified) {
+        return NextResponse.json({ code: "ALREADY_VERIFIED" }, { status: 409 });
+      }
+
+      const token = randomToken(24);
+      const tokenHash = sha256(token);
+
+      const { error: updErr } = await supabase
+        .from("petition_signatures")
+        .update({ verify_token_hash: tokenHash })
+        .eq("id", existing.id);
+
+      if (updErr) {
+        console.error(updErr);
+        return NextResponse.json({ error: "db_error" }, { status: 500 });
+      }
+
+      const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://burgereerst.nl";
+      const verifyUrl = `${siteUrl}/api/petition/verify?token=${token}&email=${encodeURIComponent(
+        emailNorm
+      )}&locale=${input.locale}`;
+
+      await sendVerifyEmail({ to: emailNorm, verifyUrl, locale: input.locale });
+      return NextResponse.json({ ok: true, code: "RESENT" }, { status: 200 });
     }
     if (e1 && e1.code !== "PGRST116") {
       // ignore maybeSingle not found code; else error
