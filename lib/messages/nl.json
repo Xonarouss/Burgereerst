@@ -1,0 +1,110 @@
+{
+  "site": {
+    "name": "BurgerEerst.nl",
+    "tagline": "Burgers eerst. Bestaanszekerheid terug.",
+    "metaDescription": "Teken de petitie tegen de huidige koers van het kabinet: stop uitkeringsverlagingen, stop kostenstapeling, herstel bestaanszekerheid en democratisch vertrouwen."
+  },
+  "nav": {
+    "petition": "Petitie",
+    "vision": "Visie",
+    "nexit": "NEXIT",
+    "privacy": "Privacy",
+    "disclaimer": "Disclaimer",
+    "contact": "Contact"
+  },
+  "home": {
+    "heroTitle": "Stop de afbraak van bestaanszekerheid.",
+    "heroLead": "Het kabinet kiest voor bezuinigingen en kostenverhogingen die burgers met de minste draagkracht het hardst raken. Wij zeggen: genoeg is genoeg.",
+    "ctaPrimary": "Teken de petitie",
+    "ctaSecondary": "Lees onze visie",
+    "countLabel": "Ondertekend",
+    "pillarsTitle": "Waar gaat deze petitie over?",
+    "pillars": [
+      {
+        "title": "Geen uitkeringsverlagingen",
+        "body": "Mensen die niet kúnnen werken verdienen zekerheid, geen straf in euro’s."
+      },
+      {
+        "title": "Stop kostenstapeling",
+        "body": "Btw, zorg, wonen en vaste lasten mogen niet blijven stijgen terwijl inkomens achterblijven."
+      },
+      {
+        "title": "Eerlijke lastenverdeling",
+        "body": "Laat de rekening niet steeds landen bij lage en middeninkomens."
+      },
+      {
+        "title": "Herstel vertrouwen",
+        "body": "Grote keuzes moeten draagvlak hebben en transparant tot stand komen."
+      }
+    ],
+    "demandsTitle": "Wat eisen wij?",
+    "demands": [
+      "Geen verdere verlaging van (arbeidsongeschiktheids-/Wajong-achtige) uitkeringen.",
+      "Bestaanszekerheid als harde ondergrens; beleid mag niemand structureel onder water duwen.",
+      "Geen extra kostenverhogingen die onevenredig op lage en middeninkomens drukken.",
+      "Transparantie en inspraak bij ingrijpend beleid dat direct het dagelijks leven raakt."
+    ],
+    "notTitle": "Wat deze petitie niet is",
+    "notBody": "Dit is geen partijcampagne en geen aanval op bevolkingsgroepen. BurgerEerst.nl is onafhankelijk en staat voor een eerlijk debat en menswaardig beleid.",
+    "formTitle": "Teken de petitie",
+    "formLead": "Na ondertekenen ontvang je een e-mail om je handtekening te bevestigen (double opt-in)."
+  },
+  "form": {
+    "name": "Naam",
+    "city": "Woonplaats",
+    "email": "E-mailadres",
+    "consent": "Ik ga akkoord met de privacyverklaring en geef toestemming om mijn handtekening te verwerken.",
+    "submit": "Onderteken",
+    "submitting": "Bezig…",
+    "success": "Check je e-mail om je handtekening te bevestigen.",
+    "already": "Dit e-mailadres is al gebruikt. Als je nog niet bevestigd hebt, check je inbox/spam.",
+    "error": "Er ging iets mis. Probeer het opnieuw."
+  },
+  "vision": {
+    "title": "Onze visie",
+    "lead": "Burgers horen niet onderaan de rekening te staan. Beleid moet beginnen bij draagkracht, eerlijkheid en democratische controle.",
+    "sections": [
+      {
+        "title": "Bestaanszekerheid is geen luxe",
+        "body": "Wie niet kan werken, moet kunnen leven. Bezuinigen op de kwetsbaarste groep is maatschappelijk onhoudbaar en ondermijnt vertrouwen."
+      },
+      {
+        "title": "Eerlijk beleid begint bij eerlijk verdelen",
+        "body": "Kosten mogen niet structureel worden afgewenteld op mensen zonder buffers. Een sterk land beschermt de ondergrens."
+      },
+      {
+        "title": "Transparantie en inspraak",
+        "body": "Grote ingrepen in zorg, uitkeringen en lasten moeten transparant zijn en aantoonbaar draagvlak hebben."
+      }
+    ]
+  },
+  "nexit": {
+    "title": "NEXIT (aparte pagina)",
+    "lead": "Deze pagina staat los van de petitie. Hier bespreken we waarom een open, democratisch debat over de relatie met de EU zinvol kan zijn.",
+    "body": [
+      "BurgerEerst.nl koppelt NEXIT niet aan de petitie. Je kunt de petitie steunen zonder het eens te zijn met de inhoud van deze pagina.",
+      "Wij pleiten voor het recht op een serieus debat over soevereiniteit, regelgeving en democratische controle. Geen taboes — wél feiten, voor- en nadelen en respect.",
+      "Een eventuele koerswijziging richting een NEXIT vraagt zorgvuldigheid: impactanalyse, scenario’s en brede democratische besluitvorming."
+    ]
+  },
+  "privacy": {
+    "title": "Privacyverklaring",
+    "body": [
+      "Wij verwerken zo min mogelijk persoonsgegevens: naam, woonplaats en e-mail om je handtekening te kunnen verifiëren.",
+      "Je e-mail wordt gebruikt voor double opt-in bevestiging en nooit verkocht of gedeeld voor marketing.",
+      "Je kunt verwijdering van je gegevens aanvragen via het contactadres."
+    ]
+  },
+  "disclaimer": {
+    "title": "Disclaimer",
+    "body": [
+      "BurgerEerst.nl is een onafhankelijke burgerwebsite en is niet gelieerd aan een politieke partij.",
+      "De informatie op deze site is bedoeld voor maatschappelijke meningsvorming en burgerparticipatie.",
+      "Misbruik, haatzaaien en oproepen tot geweld zijn niet toegestaan."
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "body": "Vragen of verzoek tot gegevensverwijdering? Mail ons op:"
+  }
+}
