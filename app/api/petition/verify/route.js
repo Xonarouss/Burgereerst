@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
 import { sha256 } from "@/lib/crypto";
+import { getBaseUrl } from "@/lib/url";
 
 export async function GET(req) {
   try {
@@ -9,8 +10,11 @@ export async function GET(req) {
     const email = searchParams.get("email");
     const locale = searchParams.get("locale") === "en" ? "en" : "nl";
 
+    const baseUrl = getBaseUrl(req);
+    const go = (code) => NextResponse.redirect(new URL(`/${locale}?verify=${code}`, baseUrl));
+
     if (!token || !email) {
-      return NextResponse.redirect(new URL(`/${locale}?verify=missing`, req.url));
+      return go("missing");
     }
 
     const tokenHash = sha256(token);
@@ -26,15 +30,15 @@ export async function GET(req) {
       .maybeSingle();
 
     if (error || !data) {
-      return NextResponse.redirect(new URL(`/${locale}?verify=notfound`, req.url));
+      return go("notfound");
     }
 
     if (data.verified) {
-      return NextResponse.redirect(new URL(`/${locale}?verify=already`, req.url));
+      return go("already");
     }
 
     if (data.verify_token_hash !== tokenHash) {
-      return NextResponse.redirect(new URL(`/${locale}?verify=invalid`, req.url));
+      return go("invalid");
     }
 
     const { error: updErr } = await supabase
@@ -44,12 +48,12 @@ export async function GET(req) {
 
     if (updErr) {
       console.error(updErr);
-      return NextResponse.redirect(new URL(`/${locale}?verify=error`, req.url));
+      return go("error");
     }
 
-    return NextResponse.redirect(new URL(`/${locale}?verify=ok`, req.url));
+    return go("ok");
   } catch (err) {
     console.error(err);
-    return NextResponse.redirect(new URL(`/nl?verify=error`, req.url));
+    return NextResponse.redirect(new URL(`/nl?verify=error`, getBaseUrl(req)));
   }
 }

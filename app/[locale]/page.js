@@ -5,6 +5,7 @@ import { getDict, t } from "@/lib/i18n";
 import PetitionForm from "@/components/PetitionForm";
 import LiveCountBadge from "@/components/LiveCountBadge";
 import RecentSignatures from "@/components/RecentSignatures";
+import VerifyBanner from "@/components/VerifyBanner";
 import Link from "next/link";
 
 export default async function Home({ params }) {
@@ -12,6 +13,7 @@ export default async function Home({ params }) {
 
   return (
     <div>
+      <VerifyBanner locale={params.locale} dict={dict} />
       {/* Hero */}
       <section className="relative overflow-hidden border-b">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:py-20">

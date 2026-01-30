@@ -9,7 +9,8 @@ export async function GET() {
     const supabase = getSupabaseAdmin();
     const { count, error } = await supabase
       .from("petition_signatures")
-      .select("*", { count: "exact", head: true });
+      .select("*", { count: "exact", head: true })
+      .eq("verified", true);
 
     if (error) throw error;
     return NextResponse.json({ count: count ?? 0 }, { status: 200 });

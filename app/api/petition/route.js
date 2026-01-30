@@ -3,6 +3,7 @@ import { z } from "zod";
 import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
 import { hashIp, randomToken, sha256 } from "@/lib/crypto";
 import { sendVerifyEmail } from "@/lib/email";
+import { getBaseUrl } from "@/lib/url";
 
 const Schema = z
   .object({
@@ -118,7 +119,7 @@ export async function POST(req) {
 
     const emailNorm = input.email.trim().toLowerCase();
     const emailHash = sha256(emailNorm);
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://burgereerst.nl";
+    const siteUrl = getBaseUrl(req);
 
     // check existing
     const { data: existing, error: e1 } = await supabase
