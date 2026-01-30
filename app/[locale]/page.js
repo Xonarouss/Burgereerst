@@ -43,7 +43,7 @@ export default async function Home({ params }) {
                   {t(dict, "home.ctaSecondary")}
                 </Link>
                 <div className="sm:ml-auto">
-                  <CountBadge locale={params.locale} dict={dict} />
+                  <LiveCountBadge locale={params.locale} dict={dict} />
                 </div>
               </div>
 
