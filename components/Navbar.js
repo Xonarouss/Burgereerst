@@ -13,7 +13,7 @@ export default function Navbar({ locale, dict }) {
     <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
         <Link href={`/${locale}`} className="flex items-center gap-3">
-          <img src="/brand/mark.png" alt="BurgerEerst" className="h-9 w-auto" />
+          <img src="/brand/logo-full.png" alt="BurgerEerst.nl" className="h-8 sm:h-9 w-auto" />
           <div className="hidden sm:block">
             <div className="text-sm font-extrabold leading-none text-slate-900">
               BurgerEerst

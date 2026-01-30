@@ -1,32 +1,58 @@
-import { getDict, t } from "@/lib/i18n";
+import { getDict } from "@/lib/i18n";
 
-export default function Nexit({ params }) {
+export default function Page({ params }) {
   const dict = getDict(params.locale);
+  const data = dict.nexit;
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-12">
-      <div className="inline-flex items-center gap-2 rounded-full border bg-white px-3 py-1 text-sm text-slate-700 shadow-soft">
-        <span className="h-2 w-2 rounded-full bg-red-600" />
-        <span>{t(dict, "nexit.lead")}</span>
-      </div>
+      <h1 className="text-3xl font-extrabold tracking-tight">{data.title}</h1>
+      <p className="mt-3 text-slate-700">{data.lead}</p>
 
-      <h1 className="mt-4 text-3xl font-extrabold">{t(dict, "nexit.title")}</h1>
+      {data.separateBannerTitle ? (
+        <div className="mt-8 rounded-3xl border bg-slate-50 p-6">
+          <div className="text-base font-semibold">{data.separateBannerTitle}</div>
+          <p className="mt-2 text-sm text-slate-700">{data.separateBannerText}</p>
+        </div>
+      ) : null}
 
-      <div className="mt-8 space-y-4">
-        {dict.nexit.body.map((p, idx) => (
-          <p key={idx} className="text-slate-700">
-            {p}
-          </p>
+      <div className="mt-10 space-y-10">
+        {data.sections?.map((sec, idx) => (
+          <section key={idx} className="rounded-3xl border bg-white p-6 shadow-soft">
+            <h2 className="text-xl font-bold">{sec.title}</h2>
+
+            {sec.paras ? (
+              <div className="mt-3 space-y-3 text-slate-700">
+                {sec.paras.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+            ) : null}
+
+            {sec.bullets ? (
+              <ul className="mt-4 space-y-3">
+                {sec.bullets.map((b, i) => (
+                  <li key={i} className="flex gap-3">
+                    <span className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-blue-700" />
+                    <span className="text-slate-700">{b}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </section>
         ))}
       </div>
 
-      <div className="mt-10 rounded-3xl border bg-slate-50 p-6">
-        <h2 className="text-lg font-bold">Belangrijk</h2>
-        <p className="mt-2 text-sm text-slate-700">
-          {params.locale === "en"
-            ? "This page is informational. The petition is about the cabinet’s current direction and cost/benefit policies."
-            : "Deze pagina is informatief. De petitie gaat over de huidige koers van het kabinet en het beleid rond kosten/uitkeringen."}
-        </p>
-      </div>
+      {data.notTitle ? (
+        <div className="mt-10 rounded-3xl border bg-slate-50 p-6">
+          <div className="text-base font-semibold">{data.notTitle}</div>
+          <ul className="mt-4 space-y-2 text-sm text-slate-700">
+            {data.notBullets?.map((b, idx) => (
+              <li key={idx}>• {b}</li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
     </div>
   );
 }

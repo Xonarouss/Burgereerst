@@ -47,7 +47,43 @@
     "notTitle": "What this petition is not",
     "notBody": "This is not a party campaign and not an attack on any group of people. BurgerEerst.nl is independent and stands for fair debate and humane policy.",
     "formTitle": "Sign the petition",
-    "formLead": "After signing you’ll receive an email to confirm your signature (double opt-in)."
+    "formLead": "After signing you’ll receive an email to confirm your signature (double opt-in).",
+    "whyTitle": "Why this petition?",
+    "whyLead": "Because basic security isn’t a luxury. And policies that hit people with the least room the hardest should never become ‘normal’.",
+    "whyCards": [
+      {
+        "title": "Basic security under pressure",
+        "text": "Cuts and tighter rules affect people who can’t work. Illness or disability is already hard enough; poverty on top is not an ‘incentive’—it’s harm."
+      },
+      {
+        "title": "Costs keep stacking",
+        "text": "VAT, healthcare, housing and groceries rise faster than incomes. If you have no buffer, every policy change hits immediately."
+      },
+      {
+        "title": "Housing shortage & capacity",
+        "text": "The housing crisis and pressure on services require realistic choices: faster building, better mobility in the market, and policy guided by capacity."
+      },
+      {
+        "title": "Democratic deficit",
+        "text": "Major decisions are too often framed as ‘inevitable’ while citizens carry the consequences. We want transparency, public support and meaningful input."
+      }
+    ],
+    "storyTitle": "A personal story (why this matters)",
+    "storyParas": [
+      "For most people, being unable to work due to illness or disability is not a choice. It’s loss: of routine, prospects, social connection and often pride.",
+      "If benefits are then structurally reduced, something avoidable happens: insecurity, stress, and the feeling of being punished for something you didn’t choose.",
+      "This petition is for everyone who feels the bill is being shifted onto those with the least room. That’s not fair — and it’s not smart, because it makes problems bigger instead of solving them."
+    ],
+    "askTitle": "What we ask for",
+    "askBullets": [
+      "No further reductions in benefits for people who are unable to work through no fault of their own.",
+      "Protect a hard floor of basic security: essential living costs must remain affordable.",
+      "No new cost increases that disproportionately hit low and middle incomes.",
+      "Housing and intake policies that match capacity and available homes.",
+      "More transparency and public input on decisions that shape everyday life."
+    ],
+    "noteTitle": "Important",
+    "noteText": "This petition targets the government’s course and concrete policies. Our position on NEXIT is on a separate page and is not part of this petition."
   },
   "form": {
     "name": "Name",
@@ -61,38 +97,142 @@
     "error": "Something went wrong. Please try again."
   },
   "vision": {
-    "title": "Our vision",
-    "lead": "Citizens should not be at the bottom of the bill. Policy must start with capacity, fairness and democratic control.",
+    "title": "Vision & principles",
+    "lead": "BurgerEerst is a citizen initiative. We stand for basic security, fair burdens, and policy that works in real life.",
     "sections": [
       {
-        "title": "Basic security isn’t a luxury",
-        "body": "If you can’t work, you must still be able to live. Cutting the most vulnerable is socially unsustainable and destroys trust."
+        "title": "1. People first",
+        "paras": [
+          "Policy should start with everyday life: housing, healthcare, safety and affordability.",
+          "If rules or cuts push people into hardship, that’s not ‘tough’ policy — it’s bad design."
+        ]
       },
       {
-        "title": "Fair policy starts with fair sharing",
-        "body": "Costs must not be structurally shifted to people without buffers. A strong country protects the floor."
+        "title": "2. A fair distribution of burdens",
+        "paras": [
+          "Those with little cannot carry even more. Burdens must be shared fairly and remain workable.",
+          "That means: no stacking of cost increases and no poverty used as a policy tool."
+        ]
       },
       {
-        "title": "Transparency and public input",
-        "body": "Major changes in healthcare, benefits and costs must be transparent and demonstrably backed by public support."
+        "title": "3. Housing & capacity",
+        "paras": [
+          "The housing crisis demands speed: building, mobility in the market and clear priorities.",
+          "Policy on intake and public services must stay aligned with capacity. Without grip, solidarity erodes."
+        ]
+      },
+      {
+        "title": "4. Democracy without shortcuts",
+        "paras": [
+          "Major decisions require explanation, debate and public support — not just press conferences.",
+          "We advocate transparency, clear goals and measurable outcomes."
+        ]
       }
+    ],
+    "notTitle": "What we are not",
+    "notBullets": [
+      "Not a political party and not affiliated with any party.",
+      "Not a call for hate or exclusion of groups.",
+      "Not a single-issue movement: we focus on the connection between basic security, housing and democracy."
     ]
   },
   "nexit": {
-    "title": "NEXIT (separate page)",
-    "lead": "This page is separate from the petition. Here we explain why an open, democratic debate about the EU relationship can be valuable.",
+    "title": "NEXIT",
+    "lead": "We advocate for a NEXIT: the Netherlands should regain full control over its own course. At the same time, this position is separate from the petition.",
     "body": [
       "BurgerEerst.nl does not tie NEXIT to the petition. You can support the petition without agreeing with this page.",
       "We argue for the right to a serious debate on sovereignty, regulation and democratic control — no taboos, but facts, pros/cons and respect.",
       "Any move towards a NEXIT would require careful preparation: impact analysis, scenarios and broad democratic decision-making."
+    ],
+    "separateBannerTitle": "Separate from the petition",
+    "separateBannerText": "The petition on the homepage is about the government’s current course and domestic measures. You can sign the petition without supporting this NEXIT position.",
+    "sections": [
+      {
+        "title": "Why NEXIT?",
+        "paras": [
+          "The European Union increasingly influences legislation, migration/asylum frameworks, fiscal rules and oversight.",
+          "We believe democratic control has moved too far away. If policy fails, the Netherlands must be able to adjust — without endless obligations or compromises."
+        ]
+      },
+      {
+        "title": "Sovereignty & democracy",
+        "paras": [
+          "Decision-making should remain close to citizens through the national parliament. When core choices are structurally out of reach, a democratic deficit grows.",
+          "A NEXIT is, for us, a route to bring responsibility back to the Netherlands: choices, consequences and adjustment in one line."
+        ]
+      },
+      {
+        "title": "Practical points (what we want to examine/arrange)",
+        "bullets": [
+          "Make Dutch law and border policy leading again, while cooperating where it makes sense.",
+          "Continue trade and cooperation through treaties, as many countries do.",
+          "A clear transition plan for businesses, workers and regulation.",
+          "A fact-based debate including costs, benefits and alternatives."
+        ]
+      },
+      {
+        "title": "What’s next?",
+        "paras": [
+          "We want this topic to stop being taboo. At minimum: a serious national debate and democratic input on the relationship with the EU.",
+          "Not with slogans, but with an actionable plan."
+        ]
+      }
     ]
   },
   "privacy": {
-    "title": "Privacy policy",
+    "title": "Privacy Policy",
     "body": [
       "We process minimal personal data: name, city and email to verify your signature.",
       "Your email is used for double opt-in confirmation and is never sold or shared for marketing.",
       "You can request deletion of your data via the contact email."
+    ],
+    "lead": "We collect as little data as possible and use it only to operate the petition.",
+    "sections": [
+      {
+        "title": "What data do we collect?",
+        "bullets": [
+          "Name (or initials)",
+          "City",
+          "Email address (for confirmation)",
+          "Signing timestamp",
+          "Limited technical logs (security/abuse prevention)"
+        ]
+      },
+      {
+        "title": "Why do we collect this?",
+        "paras": [
+          "To register your signature, reduce spam (double opt-in) and show the total number of verified signatures.",
+          "We use your email only to send the confirmation email and prevent abuse."
+        ]
+      },
+      {
+        "title": "Retention",
+        "paras": [
+          "We keep data while the petition is active and as needed to protect the integrity of the count. After that, we delete or anonymize where possible."
+        ]
+      },
+      {
+        "title": "Sharing with third parties",
+        "paras": [
+          "We never sell your data. We only share with providers necessary to run the site (e.g., email delivery and hosting) under appropriate agreements."
+        ]
+      },
+      {
+        "title": "Your rights",
+        "bullets": [
+          "Access your data",
+          "Correct inaccurate data",
+          "Deletion (where possible)",
+          "Object to processing",
+          "File a complaint with the relevant data protection authority"
+        ]
+      },
+      {
+        "title": "Contact",
+        "paras": [
+          "Questions about privacy? Email us via the address listed on the contact page."
+        ]
+      }
     ]
   },
   "disclaimer": {
@@ -101,6 +241,34 @@
       "BurgerEerst.nl is an independent civic website and is not affiliated with any political party.",
       "The information on this site is meant for public debate and civic participation.",
       "Abuse, hate speech and calls for violence are not allowed."
+    ],
+    "lead": "BurgerEerst.nl is a citizen initiative, not a political party.",
+    "sections": [
+      {
+        "title": "No affiliation",
+        "paras": [
+          "BurgerEerst.nl is not affiliated with any political party, government agency or commercial organization.",
+          "Opinions on this site are a public call and fall under freedom of expression within the limits of the law."
+        ]
+      },
+      {
+        "title": "No legal advice",
+        "paras": [
+          "Information on this site is general and does not constitute legal, financial or medical advice."
+        ]
+      },
+      {
+        "title": "External links",
+        "paras": [
+          "Links to external websites are provided for information. We are not responsible for third-party content or policies."
+        ]
+      },
+      {
+        "title": "Changes",
+        "paras": [
+          "We may update texts and content to remain accurate and current."
+        ]
+      }
     ]
   },
   "contact": {

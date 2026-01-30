@@ -135,7 +135,57 @@ export default async function Home({ params }) {
         </div>
       </section>
 
-      {/* Anchor target for CTA */}
+      
+      {/* Waarom deze petitie */}
+      <section className="mx-auto max-w-6xl px-4 pb-14">
+        <div className="rounded-3xl border bg-white p-8 shadow-soft">
+          <h2 className="text-2xl font-bold">{t(dict, "home.whyTitle")}</h2>
+          <p className="mt-3 max-w-3xl text-slate-700">{t(dict, "home.whyLead")}</p>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            {dict.home.whyCards.map((c, idx) => (
+              <div key={idx} className="rounded-3xl border bg-slate-50 p-5">
+                <div className="text-base font-semibold">{c.title}</div>
+                <p className="mt-2 text-sm text-slate-700">{c.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Persoonlijk verhaal */}
+      <section className="mx-auto max-w-6xl px-4 pb-14">
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-start">
+          <div className="lg:col-span-7">
+            <h2 className="text-2xl font-bold">{t(dict, "home.storyTitle")}</h2>
+            <div className="mt-4 space-y-4 text-slate-700">
+              {dict.home.storyParas.map((p, idx) => (
+                <p key={idx}>{p}</p>
+              ))}
+            </div>
+          </div>
+          <div className="lg:col-span-5">
+            <div className="rounded-3xl border bg-white p-6 shadow-soft">
+              <div className="text-base font-semibold">{t(dict, "home.askTitle")}</div>
+              <ul className="mt-4 space-y-3">
+                {dict.home.askBullets.map((b, idx) => (
+                  <li key={idx} className="flex gap-3">
+                    <span className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-red-600" />
+                    <span className="text-sm text-slate-700">{b}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-6 rounded-2xl border bg-slate-50 p-4 text-sm text-slate-700">
+                <span className="font-semibold">{t(dict, "home.noteTitle")}:</span>{" "}
+                {t(dict, "home.noteText")}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+{/* Anchor target for CTA */}
       <div id="petitie" className="scroll-mt-24" />
     </div>
   );

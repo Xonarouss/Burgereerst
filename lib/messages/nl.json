@@ -47,7 +47,43 @@
     "notTitle": "Wat deze petitie niet is",
     "notBody": "Dit is geen partijcampagne en geen aanval op bevolkingsgroepen. BurgerEerst.nl is onafhankelijk en staat voor een eerlijk debat en menswaardig beleid.",
     "formTitle": "Teken de petitie",
-    "formLead": "Na ondertekenen ontvang je een e-mail om je handtekening te bevestigen (double opt-in)."
+    "formLead": "Na ondertekenen ontvang je een e-mail om je handtekening te bevestigen (double opt-in).",
+    "whyTitle": "Waarom deze petitie?",
+    "whyLead": "Omdat bestaanszekerheid geen luxe is. En omdat beleid dat mensen met de minste ruimte het hardst raakt, niet ‘normaal’ mag worden.",
+    "whyCards": [
+      {
+        "title": "Bestaanszekerheid onder druk",
+        "text": "Bezuinigingen en strengere regels raken mensen die niet kúnnen werken. Ziekte of beperking is al zwaar genoeg; armoede erbovenop is geen ‘prikkel’, maar afbraak."
+      },
+      {
+        "title": "Kosten stapelen door",
+        "text": "Btw, zorg, wonen en dagelijkse boodschappen stijgen sneller dan inkomens. Wie geen buffer heeft, voelt elk beleid direct."
+      },
+      {
+        "title": "Woningnood & draagkracht",
+        "text": "Woningtekort en druk op voorzieningen vragen om keuzes met realisme: bouwtempo omhoog, doorstroming beter en beleid dat draagkracht centraal zet."
+      },
+      {
+        "title": "Democratisch tekort",
+        "text": "Grote besluiten worden te vaak verkocht als ‘onvermijdelijk’, terwijl burgers de gevolgen dragen. Wij willen transparantie, draagvlak en inspraak."
+      }
+    ],
+    "storyTitle": "Een persoonlijk verhaal (waarom dit mij raakt)",
+    "storyParas": [
+      "Niet kunnen werken door ziekte of een beperking is voor de meeste mensen geen keuze. Het is verlies: van ritme, perspectief, sociale contacten en vaak ook trots.",
+      "Als daarbovenop de uitkering structureel omlaag gaat, ontstaat er iets wat wél te voorkomen is: onzekerheid, stress, en het gevoel dat je wordt gestraft voor iets waar je geen schuld aan hebt.",
+      "Deze petitie is er voor iedereen die merkt: het beleid schuift de rekening door naar mensen met de minste ruimte. Dat is niet rechtvaardig — en het is ook niet verstandig, want het maakt problemen groter in plaats van kleiner."
+    ],
+    "askTitle": "Wat wij vragen",
+    "askBullets": [
+      "Geen verdere verlaging van uitkeringen voor arbeidsongeschikten en mensen die buiten hun schuld niet kunnen werken.",
+      "Bescherming van bestaanszekerheid als harde ondergrens: vaste lasten moeten betaalbaar blijven.",
+      "Geen extra kostenverhogingen die onevenredig op lage en middeninkomens drukken.",
+      "Beleid rond wonen en instroom dat aansluit bij draagkracht en beschikbare woningen.",
+      "Meer transparantie en inspraak bij ingrijpende keuzes die het dagelijks leven raken."
+    ],
+    "noteTitle": "Let op",
+    "noteText": "Deze petitie is gericht op de koers van het kabinet en concrete beleidskeuzes. Ons standpunt over NEXIT staat op een aparte pagina en is geen onderdeel van de petitie."
   },
   "form": {
     "name": "Naam",
@@ -61,30 +97,86 @@
     "error": "Er ging iets mis. Probeer het opnieuw."
   },
   "vision": {
-    "title": "Onze visie",
-    "lead": "Burgers horen niet onderaan de rekening te staan. Beleid moet beginnen bij draagkracht, eerlijkheid en democratische controle.",
+    "title": "Visie & principes",
+    "lead": "BurgerEerst is een burgerinitiatief. We staan voor bestaanszekerheid, eerlijke lasten en beleid dat werkt in de praktijk.",
     "sections": [
       {
-        "title": "Bestaanszekerheid is geen luxe",
-        "body": "Wie niet kan werken, moet kunnen leven. Bezuinigen op de kwetsbaarste groep is maatschappelijk onhoudbaar en ondermijnt vertrouwen."
+        "title": "1. Burgers centraal",
+        "paras": [
+          "Beleid hoort te beginnen bij het dagelijks leven van mensen: wonen, zorg, veiligheid en betaalbaarheid.",
+          "Als regels of bezuinigingen mensen in de knel duwen, is het beleid niet ‘streng’ maar simpelweg slecht ontworpen."
+        ]
       },
       {
-        "title": "Eerlijk beleid begint bij eerlijk verdelen",
-        "body": "Kosten mogen niet structureel worden afgewenteld op mensen zonder buffers. Een sterk land beschermt de ondergrens."
+        "title": "2. Eerlijke verdeling van lasten",
+        "paras": [
+          "Wie weinig heeft, kan niet nóg minder dragen. Lasten moeten eerlijk verdeeld worden en uitvoerbaar zijn.",
+          "Dat betekent: geen stapeling van kostenverhogingen en geen armoede als beleidsinstrument."
+        ]
       },
       {
-        "title": "Transparantie en inspraak",
-        "body": "Grote ingrepen in zorg, uitkeringen en lasten moeten transparant zijn en aantoonbaar draagvlak hebben."
+        "title": "3. Wonen en draagkracht",
+        "paras": [
+          "De woningnood vraagt om tempo: bouwen, doorstroming en heldere prioriteiten.",
+          "Tegelijk moet beleid rondom instroom en voorzieningen in balans zijn met capaciteit. Zonder grip ontstaat onrust en verdwijnt solidariteit."
+        ]
+      },
+      {
+        "title": "4. Democratie zonder omwegen",
+        "paras": [
+          "Grote besluiten verdienen uitleg, debat en draagvlak — niet alleen persconferenties.",
+          "Wij pleiten voor transparantie, duidelijke doelen en meetbare resultaten."
+        ]
       }
+    ],
+    "notTitle": "Wat we niet zijn",
+    "notBullets": [
+      "Geen politieke partij en niet gelieerd aan een partij.",
+      "Geen oproep tot haat of uitsluiting van bevolkingsgroepen.",
+      "Geen ‘one issue’ beweging: we richten ons op samenhang tussen bestaanszekerheid, wonen en democratie."
     ]
   },
   "nexit": {
-    "title": "NEXIT (aparte pagina)",
-    "lead": "Deze pagina staat los van de petitie. Hier bespreken we waarom een open, democratisch debat over de relatie met de EU zinvol kan zijn.",
+    "title": "NEXIT",
+    "lead": "Wij pleiten voor een NEXIT: Nederland moet weer volledige zeggenschap hebben over zijn eigen koers. Tegelijk is dit standpunt los van de petitie.",
     "body": [
       "BurgerEerst.nl koppelt NEXIT niet aan de petitie. Je kunt de petitie steunen zonder het eens te zijn met de inhoud van deze pagina.",
       "Wij pleiten voor het recht op een serieus debat over soevereiniteit, regelgeving en democratische controle. Geen taboes — wél feiten, voor- en nadelen en respect.",
       "Een eventuele koerswijziging richting een NEXIT vraagt zorgvuldigheid: impactanalyse, scenario’s en brede democratische besluitvorming."
+    ],
+    "separateBannerTitle": "Los van de petitie",
+    "separateBannerText": "De petitie op de homepage gaat over de huidige koers van het kabinet en concrete binnenlandse maatregelen. Je kunt de petitie ondertekenen zonder dit NEXIT-standpunt te steunen.",
+    "sections": [
+      {
+        "title": "Waarom NEXIT?",
+        "paras": [
+          "De Europese Unie heeft steeds meer invloed op wetgeving, migratie- en asielkaders, begrotingsregels en toezicht.",
+          "Wij vinden dat democratische controle te ver weg is geraakt. Als beleid niet werkt, moet Nederland zelf kunnen bijsturen — zonder eindeloze compromissen of verplichtingen."
+        ]
+      },
+      {
+        "title": "Soevereiniteit & democratie",
+        "paras": [
+          "Zeggenschap hoort bij de burger via het nationale parlement. Als kernkeuzes structureel buiten bereik liggen, ontstaat een democratisch tekort.",
+          "Een NEXIT is voor ons een route om verantwoordelijkheid terug te brengen naar Nederland: keuzes, gevolgen en bijsturen in één lijn."
+        ]
+      },
+      {
+        "title": "Praktische punten (wat we willen onderzoeken/regelen)",
+        "bullets": [
+          "Eigen wetgeving en grenzen weer leidend maken, met realistische samenwerking waar het kan.",
+          "Handel en samenwerking voortzetten via verdragen, zoals andere landen ook doen.",
+          "Een duidelijke transitieplanning voor bedrijven, werknemers en regelgeving.",
+          "Een eerlijk debat met feiten, inclusief kosten, baten en alternatieven."
+        ]
+      },
+      {
+        "title": "Hoe verder?",
+        "paras": [
+          "Wij willen dat dit onderwerp niet langer taboe is. Minimaal: een serieus nationaal debat en democratische inspraak over de relatie met de EU.",
+          "Niet met slogans, maar met een plan dat uitvoerbaar is."
+        ]
+      }
     ]
   },
   "privacy": {
@@ -93,6 +185,54 @@
       "Wij verwerken zo min mogelijk persoonsgegevens: naam, woonplaats en e-mail om je handtekening te kunnen verifiëren.",
       "Je e-mail wordt gebruikt voor double opt-in bevestiging en nooit verkocht of gedeeld voor marketing.",
       "Je kunt verwijdering van je gegevens aanvragen via het contactadres."
+    ],
+    "lead": "We verzamelen zo min mogelijk gegevens en gebruiken ze uitsluitend voor het functioneren van de petitie.",
+    "sections": [
+      {
+        "title": "Welke gegevens verzamelen we?",
+        "bullets": [
+          "Naam (of initialen)",
+          "Woonplaats",
+          "E-mailadres (voor bevestiging)",
+          "Tijdstip van ondertekening",
+          "Technische logs (beperkt, voor beveiliging en misbruikpreventie)"
+        ]
+      },
+      {
+        "title": "Waarom verzamelen we dit?",
+        "paras": [
+          "Om je handtekening te registreren, spam te beperken (double opt-in) en het totaal aantal bevestigde handtekeningen te tonen.",
+          "We gebruiken je e-mailadres alleen om de bevestigingsmail te sturen en om misbruik te voorkomen."
+        ]
+      },
+      {
+        "title": "Bewaartermijn",
+        "paras": [
+          "We bewaren gegevens zolang de petitie actief is en zolang als nodig is om de integriteit van de telling te waarborgen. Daarna verwijderen we gegevens of anonimiseren we deze waar mogelijk."
+        ]
+      },
+      {
+        "title": "Delen met derden",
+        "paras": [
+          "We verkopen je gegevens nooit. We delen gegevens alleen met partijen die nodig zijn voor de werking van de site (bijv. e-mailprovider en hosting), en alleen onder passende afspraken."
+        ]
+      },
+      {
+        "title": "Jouw rechten",
+        "bullets": [
+          "Inzage in je gegevens",
+          "Correctie van onjuiste gegevens",
+          "Verwijdering (waar mogelijk)",
+          "Bezwaar tegen verwerking",
+          "Klacht indienen bij de Autoriteit Persoonsgegevens"
+        ]
+      },
+      {
+        "title": "Contact",
+        "paras": [
+          "Vragen over privacy? Mail ons via het contactadres op de contactpagina."
+        ]
+      }
     ]
   },
   "disclaimer": {
@@ -101,6 +241,34 @@
       "BurgerEerst.nl is een onafhankelijke burgerwebsite en is niet gelieerd aan een politieke partij.",
       "De informatie op deze site is bedoeld voor maatschappelijke meningsvorming en burgerparticipatie.",
       "Misbruik, haatzaaien en oproepen tot geweld zijn niet toegestaan."
+    ],
+    "lead": "BurgerEerst.nl is een burgerinitiatief en geen politieke partij.",
+    "sections": [
+      {
+        "title": "Geen affiliatie",
+        "paras": [
+          "BurgerEerst.nl is niet gelieerd aan een politieke partij, overheidsinstantie of commerciële organisatie.",
+          "Meningen op deze site zijn bedoeld als publieke oproep en vallen onder vrijheid van meningsuiting binnen de grenzen van de wet."
+        ]
+      },
+      {
+        "title": "Geen juridisch advies",
+        "paras": [
+          "Informatie op deze site is algemeen en vormt geen juridisch, financieel of medisch advies."
+        ]
+      },
+      {
+        "title": "Externe links",
+        "paras": [
+          "Links naar externe websites zijn voor informatie. We zijn niet verantwoordelijk voor inhoud of beleid van derden."
+        ]
+      },
+      {
+        "title": "Wijzigingen",
+        "paras": [
+          "We kunnen teksten en inhoud aanpassen om actueel en correct te blijven."
+        ]
+      }
     ]
   },
   "contact": {
