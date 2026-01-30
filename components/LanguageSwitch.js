@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 export default function LanguageSwitch({ locale }) {
   // This is a server component by default; keep it simple with normal links.
