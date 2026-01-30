@@ -10,7 +10,8 @@
     "nexit": "NEXIT",
     "privacy": "Privacy",
     "disclaimer": "Disclaimer",
-    "contact": "Contact"
+    "contact": "Contact",
+    "about": "About"
   },
   "home": {
     "heroTitle": "Stop dismantling basic security.",
@@ -83,7 +84,12 @@
       "More transparency and public input on decisions that shape everyday life."
     ],
     "noteTitle": "Important",
-    "noteText": "This petition targets the government’s course and concrete policies. Our position on NEXIT is on a separate page and is not part of this petition."
+    "noteText": "This petition targets the government’s course and concrete policies. Our position on NEXIT is on a separate page and is not part of this petition.",
+    "recentTitle": "Latest signatures",
+    "recentLead": "Most recent confirmed signatures (double opt-in).",
+    "recentLoading": "Loading…",
+    "recentEmpty": "No confirmed signatures yet.",
+    "recentNote": "Times are local. Anonymous signatures are shown as “Anonymous”."
   },
   "form": {
     "name": "Name",
@@ -95,7 +101,8 @@
     "success": "Check your email to confirm your signature.",
     "already": "This email was already used. If you haven’t confirmed yet, check inbox/spam.",
     "error": "Something went wrong. Please try again.",
-    "recaptchaNote": "This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply."
+    "recaptchaNote": "This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.",
+    "anonymous": "Sign anonymously (only email required). Your name and city will not be shown."
   },
   "vision": {
     "title": "Vision & principles",
@@ -275,5 +282,9 @@
   "contact": {
     "title": "Contact",
     "body": "Questions or data deletion request? Email us at:"
+  },
+  "common": {
+    "refresh": "Refresh",
+    "anonymous": "Anonymous"
   }
 }

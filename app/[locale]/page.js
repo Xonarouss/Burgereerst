@@ -3,7 +3,8 @@ export const revalidate = 0;
 
 import { getDict, t } from "@/lib/i18n";
 import PetitionForm from "@/components/PetitionForm";
-import CountBadge from "@/components/CountBadge";
+import LiveCountBadge from "@/components/LiveCountBadge";
+import RecentSignatures from "@/components/RecentSignatures";
 import Link from "next/link";
 
 export default async function Home({ params }) {
@@ -49,6 +50,7 @@ export default async function Home({ params }) {
               <p className="mt-4 text-sm text-slate-500">
                 {t(dict, "home.notBody")}
               </p>
+              <RecentSignatures locale={params.locale} dict={dict} />
             </div>
 
             <div className="lg:col-span-5">
@@ -89,7 +91,7 @@ export default async function Home({ params }) {
       <section className="mx-auto max-w-6xl px-4 py-14">
         <div className="flex items-end justify-between gap-6">
           <h2 className="text-2xl font-bold">{t(dict, "home.pillarsTitle")}</h2>
-          <CountBadge locale={params.locale} dict={dict} compact />
+          <LiveCountBadge locale={params.locale} dict={dict} compact />
         </div>
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

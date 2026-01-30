@@ -19,6 +19,7 @@ export default function Footer({ locale, dict }) {
               <li><Link className="text-slate-700 hover:underline" href={`/${locale}`}>{t(dict, "nav.petition")}</Link></li>
               <li><Link className="text-slate-700 hover:underline" href={`/${locale}/visie`}>{t(dict, "nav.vision")}</Link></li>
               <li><Link className="text-slate-700 hover:underline" href={`/${locale}/nexit`}>{t(dict, "nav.nexit")}</Link></li>
+              <li><Link className="text-slate-700 hover:underline" href={`/${locale}/over-ons`}>{t(dict, "nav.about")}</Link></li>
             </ul>
           </div>
 
@@ -37,10 +38,7 @@ export default function Footer({ locale, dict }) {
                 {t(dict, "nav.contact")}
               </Link>
             </p>
-            <div className="mt-4 flex gap-2">
-              <ShareLinks locale={locale} />
-            </div>
-          </div>
+</div>
         </div>
 
         <div className="mt-10 flex flex-col gap-2 border-t pt-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
@@ -56,21 +54,3 @@ export default function Footer({ locale, dict }) {
   );
 }
 
-function ShareLinks({ locale }) {
-  const url = (process.env.NEXT_PUBLIC_SITE_URL || "https://burgereerst.nl") + `/${locale}`;
-  const text = locale === "en"
-    ? "Sign the petition on BurgerEerst.nl"
-    : "Teken de petitie op BurgerEerst.nl";
-
-  const twitter = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
-  const wa = `https://wa.me/?text=${encodeURIComponent(text + " " + url)}`;
-  const discord = url; // Discord uses OG tags; just share the URL
-
-  return (
-    <>
-      <a className="rounded-xl border bg-white px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50" href={wa} target="_blank" rel="noreferrer">WhatsApp</a>
-      <a className="rounded-xl border bg-white px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50" href={twitter} target="_blank" rel="noreferrer">X/Twitter</a>
-      <a className="rounded-xl border bg-white px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50" href={discord} target="_blank" rel="noreferrer">Discord</a>
-    </>
-  );
-}

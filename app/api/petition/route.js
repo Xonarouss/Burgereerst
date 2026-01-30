@@ -6,12 +6,22 @@ import { sendVerifyEmail } from "@/lib/email";
 
 const Schema = z.object({
   locale: z.enum(["nl", "en"]).default("nl"),
-  full_name: z.string().min(2).max(80),
-  city: z.string().min(2).max(80),
+  anonymous: z.boolean().optional().default(false),
+  full_name: z.string().max(80).optional().default(""),
+  city: z.string().max(80).optional().default(""),
   email: z.string().email().max(200),
   consent_privacy: z.boolean(),
   website: z.string().optional(), // honeypot
   recaptcha_token: z.string().optional(),
+}).superRefine((val, ctx) => {
+  if (!val.anonymous) {
+    if (!val.full_name || val.full_name.trim().length < 2) {
+      ctx.addIssue({ code: "custom", message: "full_name_required", path: ["full_name"] });
+    }
+    if (!val.city || val.city.trim().length < 2) {
+      ctx.addIssue({ code: "custom", message: "city_required", path: ["city"] });
+    }
+  }
 });
 
 
@@ -116,8 +126,8 @@ export async function POST(req) {
     const ua = req.headers.get("user-agent") || null;
 
     const { error: insErr } = await supabase.from("petition_signatures").insert({
-      full_name: input.full_name.trim(),
-      city: input.city.trim(),
+      full_name: input.anonymous ? "Anoniem" : input.full_name.trim(),
+      city: input.anonymous ? "" : input.city.trim(),
       email: emailNorm,
       email_hash: emailHash,
       consent_privacy: true,

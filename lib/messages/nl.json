@@ -10,7 +10,8 @@
     "nexit": "NEXIT",
     "privacy": "Privacy",
     "disclaimer": "Disclaimer",
-    "contact": "Contact"
+    "contact": "Contact",
+    "about": "Over ons"
   },
   "home": {
     "heroTitle": "Stop de afbraak van bestaanszekerheid.",
@@ -83,7 +84,12 @@
       "Meer transparantie en inspraak bij ingrijpende keuzes die het dagelijks leven raken."
     ],
     "noteTitle": "Let op",
-    "noteText": "Deze petitie is gericht op de koers van het kabinet en concrete beleidskeuzes. Ons standpunt over NEXIT staat op een aparte pagina en is geen onderdeel van de petitie."
+    "noteText": "Deze petitie is gericht op de koers van het kabinet en concrete beleidskeuzes. Ons standpunt over NEXIT staat op een aparte pagina en is geen onderdeel van de petitie.",
+    "recentTitle": "Laatste handtekeningen",
+    "recentLead": "De meest recente bevestigde ondertekeningen (double opt-in).",
+    "recentLoading": "Laden…",
+    "recentEmpty": "Nog geen bevestigde handtekeningen.",
+    "recentNote": "Tijden zijn lokaal. Anonieme ondertekeningen worden als “Anoniem” getoond."
   },
   "form": {
     "name": "Naam",
@@ -95,7 +101,8 @@
     "success": "Check je e-mail om je handtekening te bevestigen.",
     "already": "Dit e-mailadres is al gebruikt. Als je nog niet bevestigd hebt, check je inbox/spam.",
     "error": "Er ging iets mis. Probeer het opnieuw.",
-    "recaptchaNote": "Deze site wordt beschermd door reCAPTCHA en valt onder het Privacybeleid en de Servicevoorwaarden van Google."
+    "recaptchaNote": "Deze site wordt beschermd door reCAPTCHA en valt onder het Privacybeleid en de Servicevoorwaarden van Google.",
+    "anonymous": "Anoniem tekenen (alleen e-mailadres nodig). Naam en woonplaats worden dan niet getoond."
   },
   "vision": {
     "title": "Visie & principes",
@@ -275,5 +282,9 @@
   "contact": {
     "title": "Contact",
     "body": "Vragen of verzoek tot gegevensverwijdering? Mail ons op:"
+  },
+  "common": {
+    "refresh": "Ververs",
+    "anonymous": "Anoniem"
   }
 }
