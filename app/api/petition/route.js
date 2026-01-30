@@ -37,11 +37,25 @@ async function verifyRecaptcha({ token, ip }) {
   body.set("response", token);
   if (ip) body.set("remoteip", ip);
 
-  const resp = await fetch("https://www.google.com/recaptcha/api/siteverify", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: body.toString(),
-  });
+  // Hard timeout so the client never hangs on "Bezig..." forever.
+  const controller = new AbortController();
+  const timeoutMs = parseInt(process.env.RECAPTCHA_TIMEOUT_MS || "6000", 10);
+  const t = setTimeout(() => controller.abort(), timeoutMs);
+
+  let resp;
+  try {
+    resp = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: body.toString(),
+      signal: controller.signal,
+      cache: "no-store",
+    });
+  } catch (e) {
+    clearTimeout(t);
+    return { ok: false, reason: "network_error" };
+  }
+  clearTimeout(t);
 
   const data = await resp.json().catch(() => null);
   if (!data?.success) return { ok: false, reason: "failed", data };

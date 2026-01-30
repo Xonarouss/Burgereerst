@@ -5,6 +5,53 @@ import { t as tt } from "@/lib/i18n";
 
 const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
+function withTimeout(promise, timeoutMs, errMsg) {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => setTimeout(() => reject(new Error(errMsg)), timeoutMs)),
+  ]);
+}
+
+async function getRecaptchaToken() {
+  if (!SITE_KEY || typeof window === "undefined") return null;
+  const g = window.grecaptcha;
+  if (!g?.ready || !g?.execute) return null;
+
+  // Wrap in grecaptcha.ready and add a hard timeout so the UI never hangs.
+  const tokenPromise = new Promise((resolve, reject) => {
+    try {
+      g.ready(() => {
+        g.execute(SITE_KEY, { action: "petition" }).then(resolve).catch(reject);
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+
+  try {
+    return await withTimeout(tokenPromise, 5000, "recaptcha timeout");
+  } catch {
+    return null;
+  }
+}
+
+async function postJsonWithTimeout(url, body, timeoutMs = 15000) {
+  const controller = new AbortController();
+  const t = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+      signal: controller.signal,
+    });
+    const data = await res.json().catch(() => ({}));
+    return { res, data };
+  } finally {
+    clearTimeout(t);
+  }
+}
+
 function ShareLinks({ locale }) {
   const url = (process.env.NEXT_PUBLIC_SITE_URL || "https://burgereerst.nl") + `/${locale}`;
   const text =
@@ -46,15 +93,11 @@ export default function PetitionForm({ locale, dict }) {
     setStatus("loading");
 
     try {
-      let recaptchaToken = null;
-      if (SITE_KEY && typeof window !== "undefined" && window.grecaptcha?.execute) {
-        recaptchaToken = await window.grecaptcha.execute(SITE_KEY, { action: "petition" });
-      }
+      const recaptchaToken = await getRecaptchaToken();
 
-      const res = await fetch("/api/petition", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      const { res, data } = await postJsonWithTimeout(
+        "/api/petition",
+        {
           locale,
           anonymous: form.anonymous,
           full_name: form.anonymous ? "" : form.full_name,
@@ -63,12 +106,13 @@ export default function PetitionForm({ locale, dict }) {
           consent_privacy: form.consent,
           recaptcha_token: recaptchaToken,
           website: form.website, // honeypot
-        }),
-      });
+        },
+        15000
+      );
 
-      const data = await res.json().catch(() => ({}));
       if (res.ok) {
         setStatus("success");
+        onSigned?.();
         return;
       }
       if (data?.code === "ALREADY" || data?.code === "ALREADY_VERIFIED") {

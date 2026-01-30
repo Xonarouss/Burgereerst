@@ -1,4 +1,5 @@
 import { getDict } from "@/lib/i18n";
+import Image from "next/image";
 
 export default function Page({ params }) {
   const dict = getDict(params.locale);
@@ -8,6 +9,40 @@ export default function Page({ params }) {
     <div className="mx-auto max-w-4xl px-4 py-12">
       <h1 className="text-3xl font-extrabold tracking-tight">{data.title}</h1>
       <p className="mt-3 text-slate-700">{data.lead}</p>
+
+      {/* Video: modern, responsive player */}
+      <div className="mt-8 overflow-hidden rounded-3xl border bg-slate-900 shadow-soft">
+        <div className="relative aspect-video w-full">
+          <video
+            className="h-full w-full"
+            controls
+            playsInline
+            preload="metadata"
+            poster="/promo/Promo-2.png"
+          >
+            <source src="/media/IntroVideo.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div className="border-t border-white/10 bg-slate-950/40 px-4 py-3 text-sm text-white/80">
+          {params.locale === "en"
+            ? "Short intro video about the campaign and why this petition exists."
+            : "Korte introvideo over de campagne en waarom deze petitie er is."}
+        </div>
+      </div>
+
+      {/* Poster / flyer image */}
+      <div className="mt-6 overflow-hidden rounded-3xl border bg-white shadow-soft">
+        <div className="relative w-full">
+          <Image
+            src="/promo/Promo-2.png"
+            alt={params.locale === "en" ? "Campaign flyer" : "Campagne-afbeelding"}
+            width={1200}
+            height={1800}
+            className="h-auto w-full"
+            priority
+          />
+        </div>
+      </div>
 
       {data.separateBannerTitle ? (
         <div className="mt-8 rounded-3xl border bg-slate-50 p-6">
