@@ -1,58 +1,71 @@
-import { getDict } from "@/lib/i18n";
 
-export default function Page({ params }) {
-  const dict = getDict(params.locale);
-  const data = dict.nexit;
+export default function NexitPage({ params }) {
+  const locale = params?.locale || "nl";
 
-  return (
-    <div className="mx-auto max-w-4xl px-4 py-12">
-      <h1 className="text-3xl font-extrabold tracking-tight">{data.title}</h1>
-      <p className="mt-3 text-slate-700">{data.lead}</p>
+  const NL = (
+    <main className="max-w-4xl mx-auto px-6 py-16 space-y-8">
+      <h1 className="text-4xl font-bold">NEXIT – Kritische Analyse</h1>
+      <p>
+        De Europese Unie heeft Nederland veel gebracht, maar ook veel gekost. Steeds meer beleid
+        wordt bepaald buiten nationale democratische controle.
+      </p>
 
-      {data.separateBannerTitle ? (
-        <div className="mt-8 rounded-3xl border bg-slate-50 p-6">
-          <div className="text-base font-semibold">{data.separateBannerTitle}</div>
-          <p className="mt-2 text-sm text-slate-700">{data.separateBannerText}</p>
-        </div>
-      ) : null}
+      <h2 className="text-2xl font-semibold">Migratie</h2>
+      <p>
+        EU-verdragen beperken nationale grip op migratie. Massale instroom zonder draagvlak
+        heeft grote gevolgen voor wonen, zorg en veiligheid.
+      </p>
 
-      <div className="mt-10 space-y-10">
-        {data.sections?.map((sec, idx) => (
-          <section key={idx} className="rounded-3xl border bg-white p-6 shadow-soft">
-            <h2 className="text-xl font-bold">{sec.title}</h2>
+      <h2 className="text-2xl font-semibold">Vergelijking met Brexit</h2>
+      <p>
+        Brexit liet zien dat nationale keuzes weer mogelijk zijn buiten de EU.
+        Hoewel de uitvoering complex was, herwon het VK controle over migratie en wetgeving.
+      </p>
 
-            {sec.paras ? (
-              <div className="mt-3 space-y-3 text-slate-700">
-                {sec.paras.map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
-              </div>
-            ) : null}
+      <h2 className="text-2xl font-semibold">Democratisch tekort</h2>
+      <p>
+        Ongekozen instituties bepalen steeds vaker beleid. Nationale parlementen verliezen invloed.
+      </p>
 
-            {sec.bullets ? (
-              <ul className="mt-4 space-y-3">
-                {sec.bullets.map((b, i) => (
-                  <li key={i} className="flex gap-3">
-                    <span className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-blue-700" />
-                    <span className="text-slate-700">{b}</span>
-                  </li>
-                ))}
-              </ul>
-            ) : null}
-          </section>
-        ))}
-      </div>
-
-      {data.notTitle ? (
-        <div className="mt-10 rounded-3xl border bg-slate-50 p-6">
-          <div className="text-base font-semibold">{data.notTitle}</div>
-          <ul className="mt-4 space-y-2 text-sm text-slate-700">
-            {data.notBullets?.map((b, idx) => (
-              <li key={idx}>• {b}</li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
-    </div>
+      <h2 className="text-2xl font-semibold">Economische afweging</h2>
+      <p>
+        Nexit vraagt om een zorgvuldige afweging. Handelsrelaties blijven essentieel,
+        maar met hernieuwde nationale soevereiniteit.
+      </p>
+    </main>
   );
+
+  const EN = (
+    <main className="max-w-4xl mx-auto px-6 py-16 space-y-8">
+      <h1 className="text-4xl font-bold">NEXIT – Critical Perspective</h1>
+      <p>
+        The European Union has benefited the Netherlands, but at significant cost.
+        Increasingly, policies are decided outside national democratic control.
+      </p>
+
+      <h2 className="text-2xl font-semibold">Migration</h2>
+      <p>
+        EU frameworks limit national control over migration. Large-scale immigration without support
+        impacts housing, healthcare and safety.
+      </p>
+
+      <h2 className="text-2xl font-semibold">Comparison with Brexit</h2>
+      <p>
+        Brexit demonstrated the possibility of regaining national control.
+        Despite challenges, the UK reclaimed authority over migration and law.
+      </p>
+
+      <h2 className="text-2xl font-semibold">Democratic Deficit</h2>
+      <p>
+        Unelected institutions increasingly shape policy, reducing parliamentary influence.
+      </p>
+
+      <h2 className="text-2xl font-semibold">Economic Considerations</h2>
+      <p>
+        Nexit requires careful evaluation. Trade remains vital, but with restored sovereignty.
+      </p>
+    </main>
+  );
+
+  return locale === "en" ? EN : NL;
 }

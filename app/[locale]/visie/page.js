@@ -1,93 +1,147 @@
-import { getDict } from "@/lib/i18n";
-import Image from "next/image";
 
-export default function Page({ params }) {
-  const dict = getDict(params.locale);
-  const data = dict.vision;
+export default function VisiePage({ params }) {
+  const locale = params?.locale || "nl";
 
-  return (
-    <div className="mx-auto max-w-4xl px-4 py-12">
-      <h1 className="text-3xl font-extrabold tracking-tight">{data.title}</h1>
-      <p className="mt-3 text-slate-700">{data.lead}</p>
+  const NL = (
+    <main className="max-w-4xl mx-auto px-6 py-16 space-y-8">
+      <h1 className="text-4xl font-bold">Onze Visie – Burger Eerst, Altijd</h1>
+      <p>
+        Nederland is een rijk en veilig land, opgebouwd door generaties burgers die hebben gewerkt,
+        gezorgd, ondernomen en verantwoordelijkheid hebben genomen. Toch ervaren steeds meer Nederlanders
+        dat het beleid van vandaag niet meer in hun voordeel werkt.
+      </p>
+      <p className="font-semibold">
+        BurgerEerst is ontstaan vanuit één fundamentele overtuiging: de overheid bestaat om de burger te dienen — niet omgekeerd.
+      </p>
 
-      {/* Video: modern, responsive player */}
-      <div className="mt-8 overflow-hidden rounded-3xl border bg-slate-900 shadow-soft">
-        <div className="relative aspect-video w-full">
-          <video
-            className="h-full w-full"
-            controls
-            playsInline
-            preload="metadata"
-            poster="/promo/Promo-2.png"
-          >
-            <source src="/media/IntroVideo.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div className="border-t border-white/10 bg-slate-950/40 px-4 py-3 text-sm text-white/80">
-          {params.locale === "en"
-            ? "Short intro video about the campaign and why this petition exists."
-            : "Korte introvideo over de campagne en waarom deze petitie er is."}
-        </div>
-      </div>
+      <h2 className="text-2xl font-semibold">Bestaanszekerheid</h2>
+      <p>
+        Bestaanszekerheid vormt het fundament van een stabiele samenleving. Wonen, energie, zorg en boodschappen
+        moeten betaalbaar zijn. Vandaag zien we torenhoge lasten en structurele onzekerheid.
+      </p>
 
-      {/* Poster / flyer image */}
-      <div className="mt-6 overflow-hidden rounded-3xl border bg-white shadow-soft">
-        <div className="relative w-full">
-          <Image
-            src="/promo/Promo-2.png"
-            alt={params.locale === "en" ? "Campaign flyer" : "Campagne-afbeelding"}
-            width={1200}
-            height={1800}
-            className="h-auto w-full"
-            priority
-          />
-        </div>
-      </div>
+      <h2 className="text-2xl font-semibold">Wonen & Huisvesting</h2>
+      <p>
+        De woningmarkt is ontspoord. Huizen en studentenkamers zijn onbetaalbaar geworden,
+        terwijl huisjesmelkers buitensporige winsten maken. BurgerEerst staat voor grootschalige woningbouw,
+        het terugdringen van speculatie en het aanpakken van misstanden in de verhuurmarkt.
+      </p>
 
-      {data.separateBannerTitle ? (
-        <div className="mt-8 rounded-3xl border bg-slate-50 p-6">
-          <div className="text-base font-semibold">{data.separateBannerTitle}</div>
-          <p className="mt-2 text-sm text-slate-700">{data.separateBannerText}</p>
-        </div>
-      ) : null}
+      <h2 className="text-2xl font-semibold">Migratie</h2>
+      <p>
+        Migratie moet beheersbaar zijn. Massale instroom zonder draagvlak legt druk op wonen, zorg en sociale samenhang.
+        Menselijkheid betekent duidelijke grenzen en eerlijke procedures.
+      </p>
 
-      <div className="mt-10 space-y-10">
-        {data.sections?.map((sec, idx) => (
-          <section key={idx} className="rounded-3xl border bg-white p-6 shadow-soft">
-            <h2 className="text-xl font-bold">{sec.title}</h2>
+      <h2 className="text-2xl font-semibold">Stikstof & Milieu</h2>
+      <p>
+        Natuur beschermen is belangrijk, maar beleid moet realistisch zijn. Het huidige stikstofbeleid
+        is doorgeschoten en blokkeert woningbouw en economische ontwikkeling.
+      </p>
 
-            {sec.paras ? (
-              <div className="mt-3 space-y-3 text-slate-700">
-                {sec.paras.map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
-              </div>
-            ) : null}
+      <h2 className="text-2xl font-semibold">Zorg</h2>
+      <p>
+        De zorg staat onder druk. Vergrijzing en personeelstekorten vragen om keuzes.
+        Eerst zorgen voor wie hier al woont.
+      </p>
 
-            {sec.bullets ? (
-              <ul className="mt-4 space-y-3">
-                {sec.bullets.map((b, i) => (
-                  <li key={i} className="flex gap-3">
-                    <span className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-blue-700" />
-                    <span className="text-slate-700">{b}</span>
-                  </li>
-                ))}
-              </ul>
-            ) : null}
-          </section>
-        ))}
-      </div>
+      <h2 className="text-2xl font-semibold">Arbeid</h2>
+      <p>
+        Wie werkt moet kunnen leven. Oneerlijke concurrentie en schijnconstructies ondermijnen lonen
+        en arbeidsvoorwaarden.
+      </p>
 
-      {data.notTitle ? (
-        <div className="mt-10 rounded-3xl border bg-slate-50 p-6">
-          <div className="text-base font-semibold">{data.notTitle}</div>
-          <ul className="mt-4 space-y-2 text-sm text-slate-700">
-            {data.notBullets?.map((b, idx) => (
-              <li key={idx}>• {b}</li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
-    </div>
+      <h2 className="text-2xl font-semibold">Veiligheid & Handhaving</h2>
+      <p>
+        Regels gelden voor iedereen. Zonder handhaving verdwijnt draagvlak en vertrouwen.
+      </p>
+
+      <h2 className="text-2xl font-semibold">Luchtvaart</h2>
+      <p>
+        De luchtvaart is een essentiële economische pijler. Schiphol moet kunnen groeien,
+        Lelystad Airport moet open voor burgerluchtvaart. Indien nodig kan uitbreiding plaatsvinden
+        via innovatieve oplossingen, zoals een luchthaven op de Noordzee, om ruimte te creëren voor woningen.
+      </p>
+
+      <h2 className="text-2xl font-semibold">Soevereiniteit & Democratie</h2>
+      <p>
+        Nederland moet zelf kunnen beslissen over cruciale thema’s. De burger is geen toeschouwer, maar de opdrachtgever.
+      </p>
+
+      <h2 className="text-2xl font-semibold">Toekomst</h2>
+      <p>
+        We bouwen aan een stabiel land voor volgende generaties. Niet morgen. Nu.
+      </p>
+    </main>
   );
+
+  const EN = (
+    <main className="max-w-4xl mx-auto px-6 py-16 space-y-8">
+      <h1 className="text-4xl font-bold">Our Vision – Citizens First, Always</h1>
+      <p>
+        The Netherlands is a prosperous and safe country, built by generations of citizens who worked,
+        cared, invested and took responsibility. Yet many people feel current policies no longer work in their favor.
+      </p>
+      <p className="font-semibold">
+        BurgerEerst is based on one fundamental principle: government exists to serve its citizens — not the other way around.
+      </p>
+
+      <h2 className="text-2xl font-semibold">Security of Living</h2>
+      <p>
+        Affordable housing, energy, healthcare and daily necessities are the foundation of a stable society.
+        Today, costs are excessive and certainty is lacking.
+      </p>
+
+      <h2 className="text-2xl font-semibold">Housing</h2>
+      <p>
+        The housing market is broken. Homes and student rooms are unaffordable, while speculative landlords profit.
+        We support large-scale construction and firm action against exploitation.
+      </p>
+
+      <h2 className="text-2xl font-semibold">Migration</h2>
+      <p>
+        Migration must be manageable. Mass immigration without public support strains housing,
+        healthcare and social cohesion.
+      </p>
+
+      <h2 className="text-2xl font-semibold">Nitrogen & Environment</h2>
+      <p>
+        Environmental protection matters, but policy must be realistic. Current nitrogen rules
+        excessively block construction and growth.
+      </p>
+
+      <h2 className="text-2xl font-semibold">Healthcare</h2>
+      <p>
+        Healthcare systems are under pressure. Capacity must match responsibility — caring first for current residents.
+      </p>
+
+      <h2 className="text-2xl font-semibold">Labor</h2>
+      <p>
+        Work should provide a decent living. Unfair competition undermines wages and standards.
+      </p>
+
+      <h2 className="text-2xl font-semibold">Safety & Enforcement</h2>
+      <p>
+        Rules apply to everyone. Without enforcement, trust collapses.
+      </p>
+
+      <h2 className="text-2xl font-semibold">Aviation</h2>
+      <p>
+        Aviation is a key economic sector. Schiphol should grow, Lelystad Airport should open for civil aviation.
+        Innovative expansion, including offshore solutions, must be considered.
+      </p>
+
+      <h2 className="text-2xl font-semibold">Sovereignty & Democracy</h2>
+      <p>
+        The Netherlands must retain control over vital decisions. Citizens are the mandate.
+      </p>
+
+      <h2 className="text-2xl font-semibold">The Future</h2>
+      <p>
+        We choose stability and responsibility for future generations. Now.
+      </p>
+    </main>
+  );
+
+  return locale === "en" ? EN : NL;
 }
