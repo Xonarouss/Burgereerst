@@ -3,6 +3,7 @@ export const revalidate = 0;
 
 import { getDict, t } from "@/lib/i18n";
 import PetitionForm from "@/components/PetitionForm";
+import ShareButtons from "@/components/ShareButtons";
 import LiveCountBadge from "@/components/LiveCountBadge";
 import RecentSignatures from "@/components/RecentSignatures";
 import VerifyBanner from "@/components/VerifyBanner";
@@ -10,6 +11,10 @@ import Link from "next/link";
 
 export default async function Home({ params }) {
   const dict = getDict(params.locale);
+  const base = process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || "https://burgereerst.nl";
+  const shareUrl = `${base.replace(/\/$/, "")}/${params.locale}`;
+  const base = process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || "https://burgereerst.nl";
+  const shareUrl = `${base.replace(/\/+$/, "")}/${params.locale}`;
 
   return (
     <div>
@@ -78,6 +83,16 @@ export default async function Home({ params }) {
                 <div className="mt-5 rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
                   <span className="font-semibold">{t(dict, "home.notTitle")}:</span>{" "}
                   {t(dict, "home.notBody")}
+                </div>
+
+                {/* Share box (under petition) */}
+                <div className="mt-4 rounded-2xl border bg-white p-4">
+                  <div className="text-sm font-semibold text-slate-900">
+                    {t(dict, "home.shareTitle")}
+                  </div>
+                  <div className="mt-3">
+                    <ShareButtons url={shareUrl} title={t(dict, "home.shareText")} />
+                  </div>
                 </div>
               </div>
             </div>

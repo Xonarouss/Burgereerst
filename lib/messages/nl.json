@@ -48,6 +48,8 @@
     ],
     "notTitle": "Wat deze petitie niet is",
     "notBody": "Dit is geen partijcampagne en geen aanval op bevolkingsgroepen. BurgerEerst.nl is onafhankelijk en staat voor een eerlijk debat en menswaardig beleid.",
+    "shareTitle": "Delen",
+    "shareText": "Help mee: deel de petitie.",
     "formTitle": "Teken de petitie",
     "formLead": "Na ondertekenen ontvang je een e-mail om je handtekening te bevestigen (double opt-in).",
     "whyTitle": "Waarom deze petitie?",
@@ -237,7 +239,7 @@
         "bullets": [
           "Naam (of initialen)",
           "Woonplaats",
-          "E-mailadres (voor bevestiging)",
+        "E-mailadres (voor bevestiging en optionele blog-updates als je je aanmeldt)",
           "Tijdstip van ondertekening",
           "Technische logs (beperkt, voor beveiliging en misbruikpreventie)"
         ]
@@ -246,7 +248,7 @@
         "title": "Waarom verzamelen we dit?",
         "paras": [
           "Om je handtekening te registreren, spam te beperken (double opt-in) en het totaal aantal bevestigde handtekeningen te tonen.",
-          "We gebruiken je e-mailadres alleen om de bevestigingsmail te sturen en om misbruik te voorkomen."
+          "We gebruiken je e-mailadres om de bevestigingsmail te sturen en om misbruik te voorkomen. Als je je aanmeldt voor blog-updates, gebruiken we je e-mailadres ook om die updates te mailen."
         ]
       },
       {
@@ -268,13 +270,14 @@
           "Correctie van onjuiste gegevens",
           "Verwijdering (waar mogelijk)",
           "Bezwaar tegen verwerking",
+        "Afmelden voor blog-updates kan op elk moment via de afmeldlink in de e-mails, of door ons te mailen",
           "Klacht indienen bij de Autoriteit Persoonsgegevens"
         ]
       },
       {
         "title": "Contact",
         "paras": [
-          "Vragen over privacy? Mail ons via het contactadres op de contactpagina."
+          "Vragen over privacy of wil je je afmelden voor e-mailupdates? Mail ons via het contactadres op de contactpagina."
         ]
       }
     ]
@@ -317,7 +320,7 @@
   },
   "contact": {
     "title": "Contact",
-    "body": "Vragen of verzoek tot gegevensverwijdering? Mail ons op:"
+    "body": "Vragen, verzoek tot gegevensverwijdering, of afmelden voor blog-updates (als je dat liever niet via de afmeldlink doet)? Mail ons op:"
   },
   "common": {
     "refresh": "Ververs",

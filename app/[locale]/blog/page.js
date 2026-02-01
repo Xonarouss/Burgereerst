@@ -34,6 +34,14 @@ export default async function BlogIndex({ params, searchParams }) {
         <div className="mt-6 rounded-3xl border bg-rose-50 p-4 text-sm font-semibold text-rose-900">
           {params.locale === "nl" ? "Bevestigen lukte niet (link verlopen of al gebruikt)." : "Confirmation failed (link expired or already used)."}
         </div>
+      ) : searchParams?.unsub === "ok" ? (
+        <div className="mt-6 rounded-3xl border bg-emerald-50 p-4 text-sm font-semibold text-emerald-900">
+          {params.locale === "nl" ? "Je bent afgemeld voor e-mail updates." : "You have been unsubscribed from email updates."}
+        </div>
+      ) : searchParams?.unsub === "fail" ? (
+        <div className="mt-6 rounded-3xl border bg-rose-50 p-4 text-sm font-semibold text-rose-900">
+          {params.locale === "nl" ? "Afmelden lukte niet (link verlopen of ongeldig)." : "Unsubscribe failed (link expired or invalid)."}
+        </div>
       ) : null}
 
       {posts.length === 0 ? (

@@ -100,13 +100,6 @@ export default async function BlogPostPage({ params }) {
         </p>
       ) : null}
 
-      <div className="mt-8 rounded-3xl border bg-white p-5 shadow-soft">
-        <div className="text-sm font-semibold text-slate-800">Delen</div>
-        <div className="mt-3">
-          <ShareButtons url={shareUrl} title={post.title} />
-        </div>
-      </div>
-
       <div
         className="markdown mt-10"
         dangerouslySetInnerHTML={{ __html: html }}
@@ -117,6 +110,13 @@ export default async function BlogPostPage({ params }) {
         <p className="mt-1">
           Dit is een burgerinitiatief. We streven naar duidelijke uitleg en redelijke argumenten — ook als de boodschap scherp is.
         </p>
+      </div>
+
+      <div className="mt-12 rounded-3xl border bg-white p-5 shadow-soft">
+        <div className="text-sm font-semibold text-slate-800">Delen</div>
+        <div className="mt-3">
+          <ShareButtons url={shareUrl} title={post.title} />
+        </div>
       </div>
 
       <div className="mt-10">

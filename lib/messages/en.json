@@ -48,6 +48,8 @@
     ],
     "notTitle": "What this petition is not",
     "notBody": "This is not a party campaign and not an attack on any group of people. BurgerEerst.nl is independent and stands for fair debate and humane policy.",
+    "shareTitle": "Share",
+    "shareText": "Help out: share the petition.",
     "formTitle": "Sign the petition",
     "formLead": "After signing you’ll receive an email to confirm your signature (double opt-in).",
     "whyTitle": "Why this petition?",
@@ -237,7 +239,7 @@
         "bullets": [
           "Name (or initials)",
           "City",
-          "Email address (for confirmation)",
+          "Email address (for confirmation and optional blog updates if you subscribe)",
           "Signing timestamp",
           "Limited technical logs (security/abuse prevention)"
         ]
@@ -268,6 +270,7 @@
           "Correct inaccurate data",
           "Deletion (where possible)",
           "Object to processing",
+          "Unsubscribe from blog updates at any time via the unsubscribe link in emails, or by emailing us",
           "File a complaint with the relevant data protection authority"
         ]
       },
@@ -317,7 +320,7 @@
   },
   "contact": {
     "title": "Contact",
-    "body": "Questions or data deletion request? Email us at:"
+    "body": "Questions, data deletion request, or unsubscribe from blog updates (if you prefer not to use the email link)? Email us at:"
   },
   "common": {
     "refresh": "Refresh",
