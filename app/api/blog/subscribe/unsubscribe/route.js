@@ -23,9 +23,10 @@ export async function GET(req) {
   const supabase = getSupabaseAdmin();
   const emailHash = sha256(String(email).toLowerCase().trim());
 
+  // Fully remove the subscriber record on unsubscribe.
   const { error } = await supabase
     .from("blog_subscribers")
-    .update({ active: false, unsubscribed_at: new Date().toISOString(), updated_at: new Date().toISOString() })
+    .delete()
     .eq("email_hash", emailHash);
 
   if (error) {

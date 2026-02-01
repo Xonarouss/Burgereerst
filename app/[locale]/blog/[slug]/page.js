@@ -7,6 +7,7 @@ import { getDict } from "@/lib/i18n";
 import { getPublishedPostBySlug } from "@/lib/blog";
 import { renderMarkdownToHtml } from "@/lib/markdown";
 import ShareButtons from "@/components/ShareButtons";
+import { formatTimeAgo } from "@/lib/relativeTime";
 
 export async function generateMetadata({ params }) {
   const post = await getPublishedPostBySlug({ locale: params.locale, slug: params.slug });
@@ -68,6 +69,11 @@ export default async function BlogPostPage({ params }) {
       <div className="mt-3 text-sm text-slate-600">
         {post.published_at ? new Date(post.published_at).toLocaleDateString(params.locale, { year: "numeric", month: "long", day: "numeric" }) : ""}
         {post.author ? ` · ${post.author}` : ""}
+      </div>
+
+      <div className="mt-1 text-xs text-slate-500">
+        {post.published_at ? (params.locale === "en" ? `Posted ${formatTimeAgo(post.published_at, params.locale)}` : `Gepost ${formatTimeAgo(post.published_at, params.locale)}`) : ""}
+        {post.updated_at ? (params.locale === "en" ? ` · Updated ${formatTimeAgo(post.updated_at, params.locale)}` : ` · Laatst gewijzigd ${formatTimeAgo(post.updated_at, params.locale)}`) : ""}
       </div>
 
       {post.cover_image_url ? (

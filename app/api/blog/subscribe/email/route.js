@@ -63,7 +63,9 @@ export async function POST(req) {
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
   // Build absolute verify URL without ever falling back to localhost in production.
-  const baseUrl = getConfiguredSiteUrl() || getBaseUrl(req);
+  // For email links we do NOT want to infer from proxy headers (can be localhost).
+  // Prefer configured env var; otherwise fall back to the real production domain.
+  const baseUrl = getConfiguredSiteUrl() || "https://burgereerst.nl";
   const verifyUrl = `${baseUrl}/api/blog/subscribe/verify?token=${encodeURIComponent(token)}&locale=${encodeURIComponent(locale)}`;
 
   try {
