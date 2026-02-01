@@ -110,6 +110,8 @@ export async function POST(req) {
     content_md = "",
     cover_image_url = null,
     cover_image_path = null,
+    cover_image_caption = "",
+    cover_image_credit = "",
     tags = [],
     published = false,
   } = body;
