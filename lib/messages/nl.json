@@ -11,7 +11,8 @@
     "privacy": "Privacy",
     "disclaimer": "Disclaimer",
     "contact": "Contact",
-    "about": "Over ons"
+    "about": "Over ons",
+    "blog": "Blog"
   },
   "home": {
     "heroTitle": "Stop de afbraak van bestaanszekerheid.",
@@ -89,7 +90,9 @@
     "recentLead": "De meest recente bevestigde ondertekeningen (double opt-in).",
     "recentLoading": "Laden…",
     "recentEmpty": "Nog geen bevestigde handtekeningen.",
-    "recentNote": "Tijden zijn lokaal. Anonieme ondertekeningen worden als “Anoniem” getoond."
+    "recentNote": "Tijden zijn lokaal. Anonieme ondertekeningen worden als “Anoniem” getoond.",
+    "freedomTitle": "Vrijheid is geen product",
+    "freedomBody": "Een zogenoemde “vrijheidsverzekering” is te gek voor woorden: vrijheid kun je niet herverpakken als beleidsinstrument. Mensen die in de oorlog hun leven riskeerden voor onze vrijheid deden dat niet zodat we het later als kostenpost kunnen verkopen."
   },
   "form": {
     "name": "Naam",

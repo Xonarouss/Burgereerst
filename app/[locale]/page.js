@@ -160,6 +160,15 @@ export default async function Home({ params }) {
         </div>
       </section>
 
+
+
+      {/* Vrijheid */}
+      <section className="mx-auto max-w-6xl px-4 pb-14">
+        <div className="rounded-3xl border bg-slate-900 p-8 text-white shadow-soft">
+          <h2 className="text-2xl font-bold">{t(dict, "home.freedomTitle")}</h2>
+          <p className="mt-3 max-w-3xl text-slate-200">{t(dict, "home.freedomBody")}</p>
+        </div>
+      </section>
       {/* Persoonlijk verhaal */}
       <section className="mx-auto max-w-6xl px-4 pb-14">
         <div className="grid gap-6 lg:grid-cols-12 lg:items-start">

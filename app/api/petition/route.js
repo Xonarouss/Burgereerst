@@ -4,6 +4,7 @@ import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
 import { hashIp, randomToken, sha256 } from "@/lib/crypto";
 import { sendVerifyEmail } from "@/lib/email";
 import { getBaseUrl } from "@/lib/url";
+import { enforceRateLimit } from "@/lib/rateLimit";
 
 const Schema = z
   .object({
@@ -76,7 +77,16 @@ async function verifyRecaptcha({ token, ip }) {
 }
 
 function getClientIp(req) {
-  return req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || null;
+  const xff = req.headers.get("x-forwarded-for") || "";
+  if (xff) {
+    const first = xff.split(",")[0].trim();
+    if (first) return first;
+  }
+  const cf = req.headers.get("cf-connecting-ip");
+  if (cf) return cf.trim();
+  const real = req.headers.get("x-real-ip");
+  if (real) return real.trim();
+  return null;
 }
 
 export async function POST(req) {
@@ -106,6 +116,11 @@ export async function POST(req) {
     }
 
     const ip = getClientIp(req);
+
+    const rl = await enforceRateLimit(req, { action: "petition_submit", limit: 5, windowSec: 3600, blockSec: 3600 });
+    if (!rl.ok) {
+      return NextResponse.json({ error: "rate_limited", retry_after: rl.retryAfterSec }, { status: 429 });
+    }
 
     const captcha = await verifyRecaptcha({ token: input.recaptcha_token, ip });
     if (!captcha.ok) {

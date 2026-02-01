@@ -7,6 +7,7 @@ export default function Navbar({ locale, dict }) {
     { href: `/${locale}`, label: t(dict, "nav.petition") },
     { href: `/${locale}/visie`, label: t(dict, "nav.vision") },
     { href: `/${locale}/nexit`, label: t(dict, "nav.nexit") },
+    { href: `/${locale}/blog`, label: t(dict, "nav.blog") },
     { href: `/${locale}/over-ons`, label: t(dict, "nav.about") },
   ];
 

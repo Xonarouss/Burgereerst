@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
 import { sha256 } from "@/lib/crypto";
 import { getBaseUrl } from "@/lib/url";
+import { enforceRateLimit } from "@/lib/rateLimit";
 
 export async function GET(req) {
   try {
@@ -15,6 +16,11 @@ export async function GET(req) {
 
     if (!token || !email) {
       return go("missing");
+    }
+
+    const rl = await enforceRateLimit(req, { action: "petition_verify", limit: 60, windowSec: 3600, blockSec: 3600 });
+    if (!rl.ok) {
+      return go("rate");
     }
 
     const tokenHash = sha256(token);

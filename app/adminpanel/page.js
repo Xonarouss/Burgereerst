@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 
 function getStoredPw() {
   if (typeof window === "undefined") return "";
@@ -158,6 +159,9 @@ export default function AdminPanelPage() {
                 <button onClick={downloadCsv} className="rounded-xl bg-emerald-600 px-4 py-2 text-sm font-bold text-white">
                   Download CSV
                 </button>
+                <Link href="/adminpanel/blog" className="rounded-xl bg-white/10 px-4 py-2 text-sm font-bold text-white hover:bg-white/15">
+                  Blog CMS
+                </Link>
               </div>
             </div>
 
