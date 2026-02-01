@@ -12,8 +12,6 @@ import Link from "next/link";
 export default async function Home({ params }) {
   const dict = getDict(params.locale);
   const base = process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || "https://burgereerst.nl";
-  const shareUrl = `${base.replace(/\/$/, "")}/${params.locale}`;
-  const base = process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || "https://burgereerst.nl";
   const shareUrl = `${base.replace(/\/+$/, "")}/${params.locale}`;
 
   return (
