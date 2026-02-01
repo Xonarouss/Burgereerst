@@ -4,6 +4,7 @@ import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
 import { enforceRateLimit } from "@/lib/rateLimit";
 import { sendBlogNewPostEmail } from "@/lib/email";
 import { sendPush } from "@/lib/push";
+import { getConfiguredSiteUrl, getBaseUrl } from "@/lib/url";
 
 
 
@@ -151,7 +152,7 @@ export async function POST(req) {
 
     const becamePublished = !wasPublished && !!published;
     if (becamePublished) {
-      const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://burgereerst.nl";
+      const baseUrl = getConfiguredSiteUrl() || getBaseUrl(req);
       const articleUrl = `${baseUrl}/${locale}/blog/${slug}`;
       notifyOnPublish({ supabase, locale, title, excerpt, url: articleUrl }).catch(() => {});
     }
@@ -168,7 +169,7 @@ export async function POST(req) {
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
   if (!!published) {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://burgereerst.nl";
+    const baseUrl = getConfiguredSiteUrl() || getBaseUrl(req);
     const articleUrl = `${baseUrl}/${locale}/blog/${slug}`;
     notifyOnPublish({ supabase, locale, title, excerpt, url: articleUrl }).catch(() => {});
   }

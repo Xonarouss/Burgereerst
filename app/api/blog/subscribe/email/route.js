@@ -4,6 +4,7 @@ import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
 import { enforceRateLimit } from "@/lib/rateLimit";
 import { randomToken, sha256 } from "@/lib/crypto";
 import { sendBlogSubscribeConfirmEmail } from "@/lib/email";
+import { getConfiguredSiteUrl, getBaseUrl } from "@/lib/url";
 
 const Body = z.object({
   email: z.string().email(),
@@ -40,7 +41,8 @@ export async function POST(req) {
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://burgereerst.nl";
+  // Build absolute verify URL without ever falling back to localhost in production.
+  const baseUrl = getConfiguredSiteUrl() || getBaseUrl(req);
   const verifyUrl = `${baseUrl}/api/blog/subscribe/verify?token=${encodeURIComponent(token)}&locale=${encodeURIComponent(locale)}`;
 
   try {
