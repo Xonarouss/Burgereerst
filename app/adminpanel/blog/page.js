@@ -398,25 +398,27 @@ export default function AdminBlogPage() {
                     />
                   </div>
                   {form.cover_image_url ? (
+                  <>
                     <div className="mt-3 overflow-hidden rounded-xl border border-white/10">
                       <img src={form.cover_image_url} alt="cover" className="h-auto w-full" />
                     </div>
-                  <div className="mt-2 grid gap-2 sm:grid-cols-2">
-                    <input
-                      value={form.cover_image_caption || ""}
-                      onChange={(e) => setForm((f) => ({ ...f, cover_image_caption: e.target.value }))}
-                      className="w-full rounded-xl border border-white/10 bg-slate-950 px-3 py-2 text-sm outline-none"
-                      placeholder="Caption (optioneel)"
-                    />
-                    <input
-                      value={form.cover_image_credit || ""}
-                      onChange={(e) => setForm((f) => ({ ...f, cover_image_credit: e.target.value }))}
-                      className="w-full rounded-xl border border-white/10 bg-slate-950 px-3 py-2 text-sm outline-none"
-                      placeholder="Bijv: ANP / Naam fotograaf (optioneel)"
-                    />
-                  </div>
 
-                  ) : null}
+                    <div className="mt-2 grid gap-2 sm:grid-cols-2">
+                      <input
+                        value={form.cover_image_caption || ""}
+                        onChange={(e) => setForm((f) => ({ ...f, cover_image_caption: e.target.value }))}
+                        placeholder="Cover caption (optional)"
+                        className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 outline-none focus:border-white/20"
+                      />
+                      <input
+                        value={form.cover_image_credit || ""}
+                        onChange={(e) => setForm((f) => ({ ...f, cover_image_credit: e.target.value }))}
+                        placeholder="Cover credit (optional)"
+                        className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 outline-none focus:border-white/20"
+                      />
+                    </div>
+                  </>
+                ) : null}}
                 </div>
 
                 <div className="mt-4">
