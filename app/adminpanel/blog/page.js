@@ -418,7 +418,7 @@ export default function AdminBlogPage() {
                       />
                     </div>
                   </>
-                ) : null}}
+                ) : null}
                 </div>
 
                 <div className="mt-4">
