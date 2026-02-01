@@ -1,12 +1,14 @@
 import { NextResponse } from "next/server";
 import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
 import { sha256 } from "@/lib/crypto";
+import { getConfiguredSiteUrl, getBaseUrl } from "@/lib/url";
 
 export async function GET(req) {
   const url = new URL(req.url);
   const token = url.searchParams.get("token");
   const locale = url.searchParams.get("locale") === "en" ? "en" : "nl";
-  if (!token) return NextResponse.redirect(new URL(`/${locale}/blog?sub=fail`, req.url));
+  const baseUrl = getConfiguredSiteUrl() || getBaseUrl(req);
+  if (!token) return NextResponse.redirect(new URL(`/${locale}/blog?sub=fail`, baseUrl));
 
   const tokenHash = sha256(token);
   const supabase = getSupabaseAdmin();
@@ -19,8 +21,8 @@ export async function GET(req) {
     .maybeSingle();
 
   if (error || !data?.id) {
-    return NextResponse.redirect(new URL(`/${locale}/blog?sub=fail`, req.url));
+    return NextResponse.redirect(new URL(`/${locale}/blog?sub=fail`, baseUrl));
   }
 
-  return NextResponse.redirect(new URL(`/${locale}/blog?sub=ok`, req.url));
+  return NextResponse.redirect(new URL(`/${locale}/blog?sub=ok`, baseUrl));
 }

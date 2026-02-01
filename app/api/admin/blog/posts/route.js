@@ -3,12 +3,14 @@ import { requireAdmin } from "@/lib/adminAuth";
 import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
 import { enforceRateLimit } from "@/lib/rateLimit";
 import { sendBlogNewPostEmail } from "@/lib/email";
+import { makeUnsubscribeToken } from "@/lib/crypto";
 import { sendPush } from "@/lib/push";
 import { getConfiguredSiteUrl, getBaseUrl } from "@/lib/url";
 
 
 
 async function notifyOnPublish({ supabase, locale, title, excerpt, url }) {
+  const originForUnsub = getConfiguredSiteUrl() || (url ? new URL(url).origin : null);
   // Email subscribers
   try {
     const { data: subs } = await supabase
@@ -21,7 +23,7 @@ async function notifyOnPublish({ supabase, locale, title, excerpt, url }) {
       const targets = subs.filter((s) => (s.locale || "nl") === locale);
       for (const s of targets) {
         try {
-          await sendBlogNewPostEmail({ to: s.email, locale, title, excerpt, url });
+          await sendBlogNewPostEmail({ to: s.email, locale, title, excerpt, url, unsubscribeUrl: `${originForUnsub || ""}/api/blog/subscribe/unsubscribe?email=${encodeURIComponent(s.email)}&token=${encodeURIComponent(makeUnsubscribeToken(s.email))}&locale=${encodeURIComponent(locale)}` });
         } catch (e) {
           console.error("blog email notify failed", e?.message || e);
         }

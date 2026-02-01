@@ -73,6 +73,9 @@ create table if not exists public.blog_subscribers (
   confirm_token_hash text
 );
 
+
+-- Allow unsubscribe tracking
+alter table if exists public.blog_subscribers add column if not exists unsubscribed_at timestamptz;
 create index if not exists blog_subscribers_active_idx on public.blog_subscribers(active, locale, created_at desc);
 
 create table if not exists public.blog_push_subscriptions (

@@ -22,19 +22,40 @@ export async function POST(req) {
   const { email, locale } = parsed.data;
 
   const supabase = getSupabaseAdmin();
+
+  const emailNorm = email.toLowerCase().trim();
+  const emailHash = sha256(emailNorm);
+
+  // If there's an existing unconfirmed subscription, don't spam confirm emails.
+  // We only resend at most once per 10 minutes per email.
+  const { data: existing } = await supabase
+    .from("blog_subscribers")
+    .select("id, active, updated_at")
+    .eq("email_hash", emailHash)
+    .maybeSingle();
+
+  const nowIso = new Date().toISOString();
+
+  if (existing && existing.active === false && existing.updated_at) {
+    const last = new Date(existing.updated_at).getTime();
+    const now = Date.now();
+    if (Number.isFinite(last) && now - last < 10 * 60 * 1000) {
+      // Pretend it's fine: UX stays smooth and we avoid double sends.
+      return NextResponse.json({ ok: true });
+    }
+  }
+
   const token = randomToken(24);
   const tokenHash = sha256(token);
-  const emailHash = sha256(email.toLowerCase().trim());
 
   // Upsert by email_hash
   const { error } = await supabase.from("blog_subscribers").upsert(
     {
-      email,
+      email: emailNorm,
       email_hash: emailHash,
       locale,
       active: false,
-      confirm_token_hash: tokenHash,
-      updated_at: new Date().toISOString(),
+      confirm_token_hash: tokenHash,      updated_at: nowIso,
     },
     { onConflict: "email_hash" }
   );
