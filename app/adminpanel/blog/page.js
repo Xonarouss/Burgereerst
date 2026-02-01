@@ -47,6 +47,8 @@ export default function AdminBlogPage() {
     author: "Chris",
     cover_image_url: "",
     cover_image_path: "",
+      cover_image_caption: \"\",
+      cover_image_credit: \"\",
     tagsText: "",
     published: false,
     content_md: "",
@@ -94,6 +96,8 @@ export default function AdminBlogPage() {
       author: "Chris",
       cover_image_url: "",
       cover_image_path: "",
+      cover_image_caption: \"\",
+      cover_image_credit: \"\",
       tagsText: "",
       published: false,
       content_md: "",
@@ -110,6 +114,8 @@ export default function AdminBlogPage() {
       author: r.author || "Chris",
       cover_image_url: r.cover_image_url || "",
       cover_image_path: r.cover_image_path || "",
+      cover_image_caption: r.cover_image_caption || \"\",
+      cover_image_credit: r.cover_image_credit || \"\",
       tagsText: Array.isArray(r.tags) ? r.tags.join(", ") : "",
       published: !!r.published,
       content_md: r.content_md || "",
@@ -140,6 +146,8 @@ export default function AdminBlogPage() {
       author: form.author,
       cover_image_url: form.cover_image_url || null,
       cover_image_path: form.cover_image_path || null,
+      cover_image_caption: (form.cover_image_caption || \"\").trim() || null,
+      cover_image_credit: (form.cover_image_credit || \"\").trim() || null,
       tags,
       published: !!form.published,
       content_md: form.content_md,
@@ -393,6 +401,21 @@ export default function AdminBlogPage() {
                     <div className="mt-3 overflow-hidden rounded-xl border border-white/10">
                       <img src={form.cover_image_url} alt="cover" className="h-auto w-full" />
                     </div>
+                  <div className="mt-2 grid gap-2 sm:grid-cols-2">
+                    <input
+                      value={form.cover_image_caption || ""}
+                      onChange={(e) => setForm((f) => ({ ...f, cover_image_caption: e.target.value }))}
+                      className="w-full rounded-xl border border-white/10 bg-slate-950 px-3 py-2 text-sm outline-none"
+                      placeholder="Caption (optioneel)"
+                    />
+                    <input
+                      value={form.cover_image_credit || ""}
+                      onChange={(e) => setForm((f) => ({ ...f, cover_image_credit: e.target.value }))}
+                      className="w-full rounded-xl border border-white/10 bg-slate-950 px-3 py-2 text-sm outline-none"
+                      placeholder="Bijv: ANP / Naam fotograaf (optioneel)"
+                    />
+                  </div>
+
                   ) : null}
                 </div>
 

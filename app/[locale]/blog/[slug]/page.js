@@ -77,9 +77,21 @@ export default async function BlogPostPage({ params }) {
       </div>
 
       {post.cover_image_url ? (
-        <div className="mt-6 overflow-hidden rounded-3xl border bg-slate-100">
+        <figure className="mt-6 overflow-hidden rounded-3xl border bg-slate-100">
           <img src={post.cover_image_url} alt={post.title} className="h-auto w-full" />
-        </div>
+          {(post.cover_image_caption || post.cover_image_credit) ? (
+            <figcaption className="border-t bg-white px-4 py-2 text-xs text-slate-600">
+              {post.cover_image_caption ? <span>{post.cover_image_caption}</span> : null}
+              {post.cover_image_caption && post.cover_image_credit ? <span>{" · "}</span> : null}
+              {post.cover_image_credit ? (
+                <span>
+                  {params.locale === "en" ? "Credit: " : "Bron: "}
+                  {post.cover_image_credit}
+                </span>
+              ) : null}
+            </figcaption>
+          ) : null}
+        </figure>
       ) : null}
 
       {post.excerpt ? (

@@ -41,12 +41,20 @@ create table if not exists public.blog_posts (
   author text,
   cover_image_url text,
   cover_image_path text,
+  cover_image_caption text,
+  cover_image_credit text,
   content_md text not null default '',
   tags text[]
 );
 
 create unique index if not exists blog_posts_locale_slug_key on public.blog_posts (locale, slug);
 create index if not exists blog_posts_published_idx on public.blog_posts (published, published_at desc);
+
+-- Ensure new columns exist (safe to run multiple times)
+alter table if exists public.blog_posts
+  add column if not exists cover_image_caption text,
+  add column if not exists cover_image_credit text;
+
 
 -- Rate limiting (DB-backed, works across instances)
 create table if not exists public.rate_limits (

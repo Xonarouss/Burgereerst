@@ -80,7 +80,7 @@ export async function GET(req) {
   const supabase = getSupabaseAdmin();
   const { data, error } = await supabase
     .from("blog_posts")
-    .select("id, locale, slug, title, excerpt, author, cover_image_url, published, published_at, updated_at, created_at")
+    .select("id, locale, slug, title, excerpt, author, cover_image_url, cover_image_caption, cover_image_credit, published, published_at, updated_at, created_at")
     .order("created_at", { ascending: false })
     .limit(limit);
 
@@ -136,6 +136,8 @@ export async function POST(req) {
     content_md,
     cover_image_url,
     cover_image_path,
+    cover_image_caption,
+    cover_image_credit,
     tags,
     published: !!published,
     published_at: published ? (body.published_at || now) : null,
