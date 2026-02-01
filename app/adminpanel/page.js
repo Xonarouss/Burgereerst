@@ -118,6 +118,21 @@ export default function AdminPanelPage() {
           Verborgen beheerpagina. Deel deze URL niet. Auth gebeurt via <code className="rounded bg-white/10 px-2 py-0.5">ADMIN_PASSWORD</code>.
         </p>
 
+        <div className="mt-4 flex flex-wrap gap-2">
+          <Link
+            href="/"
+            className="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-bold text-slate-100 hover:bg-white/10"
+          >
+            ← Terug naar BurgerEerst.nl
+          </Link>
+          <Link
+            href="/adminpanel/blog"
+            className="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-bold text-slate-100 hover:bg-white/10"
+          >
+            Naar Blog CMS →
+          </Link>
+        </div>
+
         <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div className="w-full md:max-w-md">

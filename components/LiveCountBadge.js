@@ -45,7 +45,10 @@ export default function LiveCountBadge({ locale, dict, compact }) {
         </span>
         {typeof growth24 === "number" && growth24 > 0 ? (
           <span className="ml-1 rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-extrabold text-emerald-900">
-            +{new Intl.NumberFormat(locale).format(growth24)} 24u
+            {(() => {
+              const f = new Intl.NumberFormat(locale).format(growth24);
+              return locale === "nl" ? `+${f} in de laatste 24 uur` : `+${f} in the last 24h`;
+            })()}
           </span>
         ) : null}
       </div>

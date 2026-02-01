@@ -2,7 +2,66 @@ import { NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/adminAuth";
 import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
 import { enforceRateLimit } from "@/lib/rateLimit";
+import { sendBlogNewPostEmail } from "@/lib/email";
+import { sendPush } from "@/lib/push";
 
+
+
+async function notifyOnPublish({ supabase, locale, title, excerpt, url }) {
+  // Email subscribers
+  try {
+    const { data: subs } = await supabase
+      .from("blog_subscribers")
+      .select("email, locale")
+      .eq("active", true)
+      .limit(5000);
+
+    if (Array.isArray(subs) && subs.length) {
+      const targets = subs.filter((s) => (s.locale || "nl") === locale);
+      for (const s of targets) {
+        try {
+          await sendBlogNewPostEmail({ to: s.email, locale, title, excerpt, url });
+        } catch (e) {
+          console.error("blog email notify failed", e?.message || e);
+        }
+      }
+    }
+  } catch (e) {
+    console.error("blog email notify list failed", e?.message || e);
+  }
+
+  // Push subscribers
+  try {
+    const { data: pushes } = await supabase
+      .from("blog_push_subscriptions")
+      .select("endpoint_hash, subscription, locale")
+      .eq("active", true)
+      .limit(5000);
+
+    if (Array.isArray(pushes) && pushes.length) {
+      const targets = pushes.filter((p) => (p.locale || "nl") === locale);
+      for (const p of targets) {
+        const r = await sendPush({
+          subscription: p.subscription,
+          payload: {
+            title: locale === "en" ? "New article – BurgerEerst" : "Nieuw artikel – BurgerEerst",
+            body: title + (excerpt ? ` — ${String(excerpt).slice(0, 120)}` : ""),
+            url,
+            icon: "/favicon.png",
+            badge: "/favicon.png",
+          },
+        });
+
+        if (!r.ok && (r.statusCode === 404 || r.statusCode === 410)) {
+          // endpoint gone; disable it
+          await supabase.from("blog_push_subscriptions").update({ active: false }).eq("endpoint_hash", p.endpoint_hash);
+        }
+      }
+    }
+  } catch (e) {
+    console.error("blog push notify failed", e?.message || e);
+  }
+}
 export async function GET(req) {
   const auth = requireAdmin(req);
   if (!auth.ok) return auth.res;
@@ -59,6 +118,12 @@ export async function POST(req) {
   const supabase = getSupabaseAdmin();
   const now = new Date().toISOString();
 
+  let wasPublished = false;
+  if (id) {
+    const { data: prev } = await supabase.from("blog_posts").select("published").eq("id", id).maybeSingle();
+    wasPublished = !!prev?.published;
+  }
+
   const row = {
     locale,
     slug,
@@ -83,6 +148,14 @@ export async function POST(req) {
       .select("id")
       .maybeSingle();
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+
+    const becamePublished = !wasPublished && !!published;
+    if (becamePublished) {
+      const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://burgereerst.nl";
+      const articleUrl = `${baseUrl}/${locale}/blog/${slug}`;
+      notifyOnPublish({ supabase, locale, title, excerpt, url: articleUrl }).catch(() => {});
+    }
+
     return NextResponse.json({ ok: true, id: data?.id || id });
   }
 
@@ -93,6 +166,13 @@ export async function POST(req) {
     .maybeSingle();
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+
+  if (!!published) {
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://burgereerst.nl";
+    const articleUrl = `${baseUrl}/${locale}/blog/${slug}`;
+    notifyOnPublish({ supabase, locale, title, excerpt, url: articleUrl }).catch(() => {});
+  }
+
   return NextResponse.json({ ok: true, id: data?.id });
 }
 

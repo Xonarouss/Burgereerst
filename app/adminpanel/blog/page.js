@@ -199,7 +199,13 @@ export default function AdminBlogPage() {
               Beheer je blogposts (Markdown + afbeeldingen). Terug naar het <Link className="font-semibold text-blue-300 hover:underline" href="/adminpanel">admin panel</Link>.
             </p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
+            <Link
+              href="/"
+              className="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-bold text-slate-100 hover:bg-white/10"
+            >
+              ← Terug naar site
+            </Link>
             <button
               onClick={() => load(pw)}
               disabled={loading || !pw}
@@ -259,7 +265,13 @@ export default function AdminBlogPage() {
                               {r.locale} · /{r.locale}/blog/{r.slug} · {r.published ? "PUBLISHED" : "DRAFT"}
                             </div>
                           </div>
-                          <div className="flex gap-2">
+                          <div className="flex flex-wrap gap-2">
+            <Link
+              href="/"
+              className="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-bold text-slate-100 hover:bg-white/10"
+            >
+              ← Terug naar site
+            </Link>
                             <button
                               onClick={() => startEdit(r)}
                               className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-bold text-white"
@@ -405,7 +417,13 @@ export default function AdminBlogPage() {
                     Published
                   </label>
 
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2">
+            <Link
+              href="/"
+              className="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-bold text-slate-100 hover:bg-white/10"
+            >
+              ← Terug naar site
+            </Link>
                     <button
                       onClick={save}
                       className="rounded-xl bg-emerald-600 px-4 py-2 text-sm font-bold text-white"

@@ -56,3 +56,33 @@ create table if not exists public.rate_limits (
   blocked_until timestamptz,
   updated_at timestamptz not null default now()
 );
+
+
+-- ---------------------------------------------------------------------
+-- BLOG NOTIFICATIONS
+-- ---------------------------------------------------------------------
+create table if not exists public.blog_subscribers (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  confirmed_at timestamptz,
+  active boolean not null default false,
+  locale text not null default 'nl',
+  email text not null,
+  email_hash text not null unique,
+  confirm_token_hash text
+);
+
+create index if not exists blog_subscribers_active_idx on public.blog_subscribers(active, locale, created_at desc);
+
+create table if not exists public.blog_push_subscriptions (
+  endpoint_hash text primary key,
+  endpoint text not null,
+  locale text not null default 'nl',
+  subscription jsonb not null,
+  active boolean not null default true,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create index if not exists blog_push_subscriptions_active_idx on public.blog_push_subscriptions(active, locale, created_at desc);

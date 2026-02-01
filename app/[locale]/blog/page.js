@@ -4,8 +4,9 @@ export const revalidate = 0;
 import Link from "next/link";
 import { getDict, t } from "@/lib/i18n";
 import { listPublishedPosts } from "@/lib/blog";
+import BlogSubscribe from "@/components/BlogSubscribe";
 
-export default async function BlogIndex({ params }) {
+export default async function BlogIndex({ params, searchParams }) {
   const dict = getDict(params.locale);
   const posts = await listPublishedPosts({ locale: params.locale, limit: 100 });
 
@@ -25,6 +26,15 @@ export default async function BlogIndex({ params }) {
           RSS
         </a>
       </div>
+      {searchParams?.sub === "ok" ? (
+        <div className="mt-6 rounded-3xl border bg-emerald-50 p-4 text-sm font-semibold text-emerald-900">
+          {params.locale === "nl" ? "Abonnement bevestigd. Je krijgt updates bij nieuwe artikelen." : "Subscription confirmed. You'll get updates when new articles are published."}
+        </div>
+      ) : searchParams?.sub === "fail" ? (
+        <div className="mt-6 rounded-3xl border bg-rose-50 p-4 text-sm font-semibold text-rose-900">
+          {params.locale === "nl" ? "Bevestigen lukte niet (link verlopen of al gebruikt)." : "Confirmation failed (link expired or already used)."}
+        </div>
+      ) : null}
 
       {posts.length === 0 ? (
         <div className="mt-8 rounded-3xl border bg-white p-8 text-slate-700 shadow-soft">
@@ -64,13 +74,7 @@ export default async function BlogIndex({ params }) {
           ))}
         </div>
       )}
-
-      <div className="mt-10 rounded-3xl border bg-slate-50 p-6 text-sm text-slate-700">
-        <div className="font-semibold">Tip</div>
-        <p className="mt-1">
-          Deel artikelen met je netwerk: goed onderbouwde uitleg helpt om mensen mee te krijgen — ook als ze niet meteen alles met je eens zijn.
-        </p>
-      </div>
+      <BlogSubscribe locale={params.locale} />
     </section>
   );
 }
