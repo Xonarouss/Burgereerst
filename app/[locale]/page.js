@@ -83,12 +83,7 @@ export default async function Home({ params }) {
                   {t(dict, "home.notBody")}
                 </div>
 
-                {/* Share box (under petition) */}
-                <div className="mt-4 rounded-2xl border bg-white p-4">
-                  <div className="text-sm font-semibold text-slate-900">
-                    {t(dict, "home.shareTitle")}
-                  </div>
-                  <div className="mt-3">
+                <div className="mt-3">
                     <ShareButtons url={shareUrl} title={t(dict, "home.shareText")} />
                   </div>
                 </div>

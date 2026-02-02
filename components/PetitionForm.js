@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { t as tt } from "@/lib/i18n";
+import ShareButtons from "@/components/ShareButtons";
 
 const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
@@ -52,7 +53,7 @@ async function postJsonWithTimeout(url, body, timeoutMs = 15000) {
   }
 }
 
-function ShareLinks({ locale }) {
+function ShareLinks({ locale, dict }) {
   const url = (process.env.NEXT_PUBLIC_SITE_URL || "https://burgereerst.nl") + `/${locale}`;
   const text =
     locale === "en" ? "Sign the petition on BurgerEerst.nl" : "Teken de petitie op BurgerEerst.nl";
@@ -64,18 +65,25 @@ function ShareLinks({ locale }) {
   const discord = url; // Discord uses OG tags; just share the URL
 
   return (
-    <div className="mt-3">
-      <div className="text-xs font-semibold text-slate-700">{locale === "en" ? "Share this petition" : "Deel deze petitie"}</div>
-      <div className="mt-2 flex flex-wrap gap-2">
-        <a className="rounded-xl border bg-white px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50" href={wa} target="_blank" rel="noreferrer">WhatsApp</a>
-        <a className="rounded-xl border bg-white px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50" href={twitter} target="_blank" rel="noreferrer">X/Twitter</a>
-        <a className="rounded-xl border bg-white px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50" href={discord} target="_blank" rel="noreferrer">Discord</a>
+    <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+      <div className="text-sm font-semibold text-slate-900">
+        {(dict?.home?.shareTitle) || (locale === "en" ? "Share" : "Delen")}
+      </div>
+      <div className="mt-1 text-xs text-slate-600">
+        {(dict?.home?.shareDesc) || (locale === "en" ? "Share this petition" : "Deel deze petitie")}
+      </div>
+      <div className="mt-3">
+        <ShareButtons
+          url={shareUrl}
+          title={(dict?.home?.shareMetaTitle) || (dict?.home?.title) || "BurgerEerst"}
+        />
       </div>
     </div>
   );
 }
 
 export default function PetitionForm({ locale, dict, onSigned }) {
+
   const [status, setStatus] = useState("idle"); // idle | loading | success | error | already
   const [form, setForm] = useState({
     anonymous: false,
@@ -201,7 +209,7 @@ export default function PetitionForm({ locale, dict, onSigned }) {
         {status === "loading" ? t("form.submitting") : t("form.submit")}
       </button>
 
-      <ShareLinks locale={locale} />
+      <ShareLinks locale={locale} dict={dict} />
 
       <p className="mt-3 text-xs text-slate-500">
         {t("form.recaptchaNote")}{" "}
